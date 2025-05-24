@@ -10,7 +10,7 @@ public class Order {
 	private Taxi taxi ;
 	private double orderPrice;
 	
-	
+	//Constructors
 	public Order(String orderNum, String managerCode, int day, int month, int hour, String subCode, Taxi taxi,
 			double orderPrice) {
 		super();
@@ -23,6 +23,18 @@ public class Order {
 		this.taxi = taxi;
 		this.orderPrice = orderPrice;
 	}
+	public Order(){
+		super();
+		this.orderNum = null;
+		this.managerCode = null;
+		this.day = 0;
+		this.month = 0;
+		this.hour = 0;
+		this.subCode = null;
+		this.taxi = null;
+		this.orderPrice = 0;
+	}
+	//Getters and Setters
 	public String getOrderNum() {
 		return orderNum;
 	}

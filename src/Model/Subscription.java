@@ -7,7 +7,7 @@ public class Subscription {
 	private String address;
 	private String phone;
 	
-	
+	//Constructors
 	public Subscription(String subCode, String firstName, String lastName, String address, String phone) {
 		super();
 		this.subCode = subCode;
@@ -16,6 +16,15 @@ public class Subscription {
 		this.address = address;
 		this.phone = phone;
 	}
+	public Subscription(){
+		super();
+		this.subCode = null;
+		this.firstName = null;
+		this.lastName = null;
+		this.address = null;
+		this.phone = null;
+	}
+	//Getters and Setters
 	public String getSubCode() {
 		return subCode;
 	}

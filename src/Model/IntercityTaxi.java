@@ -1,13 +1,15 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class IntercityTaxi extends Taxi {
 	private ArrayList<String> cities;
 	private int citiesNum ;
 	private double extraPrice;
 	private int maxHours;
+
+	//Constructors
 	public IntercityTaxi(String taxiCode, boolean available, double minPrice, ArrayList<String> cities,
 			double extraPrice, int maxHours) {
 		super(taxiCode, available, minPrice);
@@ -17,7 +19,6 @@ public class IntercityTaxi extends Taxi {
 		this.maxHours = maxHours;
 	}
 	
-	
 	public IntercityTaxi(String taxiCode, boolean available, double minPrice, double extraPrice, int maxHours) {
 		super(taxiCode, available, minPrice);
 		this.cities = new ArrayList<>();
@@ -25,8 +26,15 @@ public class IntercityTaxi extends Taxi {
 		this.extraPrice = extraPrice;
 		this.maxHours = maxHours;
 	}
+	public IntercityTaxi(){
+		super();
+		this.cities = new ArrayList<>();
+		this.citiesNum = 0;
+		this.extraPrice = 0;
+		this.maxHours = 0;
+	}
 
-
+	//Getters and Setters
 	public ArrayList<String> getCities() {
 		return cities;
 	}

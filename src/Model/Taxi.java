@@ -6,13 +6,20 @@ public class Taxi {
 	protected double minPrice;
 	
 	
-	
+	//Constructors
 	public Taxi(String taxiCode, boolean available, double minPrice) {
 		super();
 		this.taxiCode = taxiCode;
 		this.available = available;
 		this.minPrice = minPrice;
 	}
+	public Taxi(){
+		super();
+		this.taxiCode = null;
+		this.available = false;
+		this.minPrice = 0;
+	}
+	//Getters and Setters
 	public String getTaxiCode() {
 		return taxiCode;
 	}

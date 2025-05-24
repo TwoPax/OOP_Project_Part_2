@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class MainManager extends Manager{
 	private String userName;
 	private String password;
+
+	//Constructors
 	public MainManager(String id, String firstName, String lastName, String phone, String address, ArrayList<Taxi> taxies,
 			ArrayList<Order> orders, String userName, String password) {
 		super(id, firstName, lastName, phone, address, taxies, orders);
@@ -18,8 +20,13 @@ public class MainManager extends Manager{
 		this.userName = userName;
 		this.password = password;
 	}
+	public MainManager(){
+		super();
+		this.userName = null;
+		this.password = null;
+	}
 
-
+	//Getters and Setters
 	public String getUserName() {
 		return userName;
 	}

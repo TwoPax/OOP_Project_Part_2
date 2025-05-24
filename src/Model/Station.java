@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Station {
 	private String stationName;
@@ -14,15 +13,21 @@ public class Station {
 		this.taxisNum = taxis.size();
 	}
 	
-	
+	//Constructors
 	public Station(String stationName) {
 		super();
 		this.stationName = stationName;
 		this.taxiesInStation = new ArrayList<>();
 		this.taxisNum = 0;
 	}
+	public Station(){
+		super();
+		this.stationName = null;
+		this.taxiesInStation = new ArrayList<>();
+		this.taxisNum = 0;
+	}
 
-
+	//Getters and Setters
 	public String getStationName() {
 		return stationName;
 	}

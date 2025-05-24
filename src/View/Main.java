@@ -9,7 +9,7 @@ public class Main {
 	
     static Scanner scanner = new Scanner(System.in);
     
-    static Systemhw ourSystem = new Systemhw();
+    static Systemhw ourSystem = new Systemhw(); //********************************************Fix*********************************************** 
     static Order[] orders = new Order[100];
     static int orderCount = 0;
     
@@ -20,7 +20,9 @@ public class Main {
 	     mainMenu();
 	     return;
 	}
-	
+	/*
+     * Effect: Shows main menu
+     */
 	public static void mainMenu() {
 	
         while (true) {
@@ -47,8 +49,10 @@ public class Main {
         }
         return;
     }
-
-    public static void initializeData() {
+    /*
+     * Effect: Initialize all data *************************************************Fix***********************************
+     */
+    public static void initializeData() { 
     	ourSystem.addManager(new MainManager("9001", "Maria", "Fahoum", "0500000000", "Central Perk", "system", "12345"));
     	ourSystem.addManager(new Manager("M1", "Mike", "Hannigan", "0500000001", "NYC"));
     	ourSystem.addManager(new Manager("M2", "Janice", "Hosenstein", "0500000002", "Brooklyn"));
@@ -79,7 +83,10 @@ public class Main {
     }
 
 
-    
+    /*
+     * Effect: Getting day value from user
+     * Output: A legal value of day
+     */
     public static int getValidDay() {
         int day;
         do {
@@ -92,7 +99,10 @@ public class Main {
         } while (day < 1 || day > 31);
         return day;
     }
-
+    /*
+     * Effect: Getting month value from user
+     * Output: A legal value of month
+     */
     public static int getValidMonth() {
         int month;
         do {
@@ -105,7 +115,10 @@ public class Main {
         } while (month < 1 || month > 12);
         return month;
     }
-
+    /*
+     * Effect: Getting hour value from user
+     * Output: A legal value of hour
+     */
     public static int getValidHour() {
         int hour;
         do {
@@ -118,7 +131,10 @@ public class Main {
         } while (hour < 0 || hour > 23);
         return hour;
     }
-
+    /*
+     * Effect: Getting price value from user
+     * Output: A legal value of price
+     */
     public static double getValidPrice() {
         double price;
         do {
@@ -131,7 +147,10 @@ public class Main {
         } while (price <= 0);
         return price;
     }
-    
+    /*
+     * Effect: Getting a positive value from user
+     * Output: A legal value of number
+     */
     public static int getPositiveNumber() {
         int number;
         do {
@@ -144,7 +163,9 @@ public class Main {
         } while (number <= 0);
         return number;
     }
-    
+    /*
+     * Effect: Shows login main manager menu, initiates logging in
+     */
     public static void loginMainManager() {
         System.out.print("Username: ");
         String user = scanner.nextLine();
@@ -161,7 +182,9 @@ public class Main {
         }
         System.out.println("Login failed.");
     }
-
+    /*
+     * Effect: Shows main manager menu
+     */
     public static void mainManagerMenu() {
         while (true) {
             System.out.println("\n--- Main Manager Menu ---");
@@ -188,7 +211,9 @@ public class Main {
 
         }
     }
-
+    /*
+     * Effect: Getting subscriber values from user, adds it to our DataBase *********************************FIX*******************************
+     */
     public static void addSubscriber() {
         System.out.print("ID: "); String id = scanner.nextLine();
         System.out.print("First name: "); String fn = scanner.nextLine();
@@ -202,7 +227,9 @@ public class Main {
         else System.out.println("Failed to add subscriber .");
         mainManagerMenu();
     }
-
+    /*
+     * Effect: Getting manager values form user, adds it to our DataBase *********************************Fix***********************************
+     */
     public static void addManager() {
         System.out.println("Type: 1. Regular  2. Main");
         int type = scanner.nextInt(); scanner.nextLine();
@@ -226,7 +253,9 @@ public class Main {
         
         else System.out.println("Failed to add manager!");
         return;    }
-
+    /*
+     * Effect: Getting Taxi values form user, adds it to our DataBase *********************************Fix***********************************
+     */
     public static void addTaxi() {
         System.out.println("Type: 1. Regular 2. Express 3. InterCity");
         String type = scanner.nextLine(); 
@@ -265,7 +294,9 @@ public class Main {
        else System.out.println("failed to add Taxi");
        return;
     }
-
+    /*
+     * Effect: Getting a taxi code and manager's ID, adds taxi to manager's taxi list if legal ****************************Fix*****************************
+     */
     public static void assignTaxiToManager() {
         System.out.print("Taxi code: ");
         String taxiCode = scanner.nextLine();
@@ -294,7 +325,9 @@ public class Main {
         return;
     }
     
-   
+   /*
+    * Effect: Getting manager's ID, if manager exist, shows regular manager's menu *****************************Fix*******************************
+    */
     public static void loginManager() {
         System.out.print("Manager ID: ");
         String id = scanner.nextLine();
@@ -310,7 +343,9 @@ public class Main {
         return;
         
     }
-
+    /*
+     * Effect: Shows regular manager's menu
+     */
     public static void managerMenu(Manager manager) {
         while (true) {
             System.out.println("\n--- Manager Menu ---");
@@ -329,7 +364,9 @@ public class Main {
     }
 
    
-
+    /*
+     * Effect: Getting order values from user, if legal, adds order to DataBase *************************************Fix*************************************
+     */
     public static void addOrder(Manager manager) {
     	 System.out.print("Order ID: ");
          String orderId = scanner.nextLine();
@@ -379,9 +416,12 @@ public class Main {
         managerMenu(manager);
     }
 
+    /*
+     * Effect: Getting existing order's number, changing taxi if legal *********************Fix**********************
+     */
     public static void changeTaxiInOrder(Manager manager) {
     	if(orderCount==0) {
-            System.out.print("There's no orders yet!");
+            System.out.print("There are no orders yet!");
             managerMenu(manager);
 
     	}
@@ -439,8 +479,10 @@ public class Main {
         System.out.println("Taxi changed in order.");
         managerMenu(manager);
     }
-
-    public  static void loginSubscriber() {
+    /*
+     * Effect: Getting subscriber ID from user, if legal, logging in *****************************Fix*****************************
+     */
+    public static void loginSubscriber() {
         System.out.print("Subscriber ID: ");
         String id = scanner.nextLine();
         Subscription sub = null;
@@ -457,7 +499,9 @@ public class Main {
             System.out.println("Subscriber not found.");
         }
     }
-
+    /*
+     * Effect: Shows subscriber's menu
+     */
     public static void subscriberMenu(Subscription sub) {
         while (true) {
             System.out.println("\n--- Subscriber Menu ---");
@@ -487,7 +531,9 @@ public class Main {
             }
         }
     }
-
+    /*
+     * Effect: Prints all orders by subscriber   ******************************Fix****************************
+     */
     public static void printSubscriberOrders(Subscription sub) {
         boolean found = false;
         for (int i = 0; i < orderCount; i++) {
@@ -506,7 +552,9 @@ public class Main {
             return;
         }
     }
-
+    /*
+     * Effect: Updates subscriber's details according user requests
+     */
     public static void updateSubscriberDetails(Subscription sub) {
         System.out.print("New Phone: ");
         String phone = scanner.nextLine();
@@ -517,7 +565,9 @@ public class Main {
         System.out.println("Details updated.");
         return;
     }
-
+    /*
+     * Effect: Getting a taxi code from user, if found, showing taxi details *************************Fix***************************
+     */
     public  static void showTaxiDetails(Subscription sub) {
         System.out.print("Taxi Code: ");
         boolean founded=false;
@@ -533,7 +583,9 @@ public class Main {
         return;
         
     }
-
+    /*
+     * Showing all taxies???????!!!!!!!!!!! ********************Fix**************************
+     */
     public  static void displayAllTaxis() {
         System.out.println("\n--- All Taxis ---");
         for (Taxi t : ourSystem.getTaxis()) {
