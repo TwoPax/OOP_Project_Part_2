@@ -141,6 +141,7 @@ public class Manager {
 		taxies.remove(taxiIndex);
 		taxisNum--;
 		System.out.println("Manager is no longer in charge of this taxi");
+		return true;
 	}
 	
 	/*
@@ -150,7 +151,7 @@ public class Manager {
 	 */
 	public boolean addOrder(Order newOrder) {
 
-		
+
 			
 	}
 	public boolean removeOrder(Order orderToremove) {
