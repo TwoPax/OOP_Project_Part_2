@@ -1,34 +1,24 @@
 package Model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class MainManager extends Manager{
 	private String userName;
 	private String password;
-	public MainManager(String id, String firstName, String lastName, String phone, String address, Taxi[] taxis,
-			Order[] orders, String userName, String password) {
-		super(id, firstName, lastName, phone, address, taxis, orders);
+	public MainManager(String id, String firstName, String lastName, String phone, String address, ArrayList<Taxi> taxies,
+			ArrayList<Order> orders, String userName, String password) {
+		super(id, firstName, lastName, phone, address, taxies, orders);
 		this.userName = userName;
 		this.password = password;
 	}
 	
 	public MainManager(String id, String firstName, String lastName, String phone, String address,
-			Order[] orders, String userName, String password) {
-		super(id, firstName, lastName, phone, address,  orders);
-		this.userName = userName;
-		this.password = password;
-	}
-	public MainManager(String id, String firstName, String lastName, String phone, String address, Taxi[] taxis,
-			 String userName, String password) {
-		super(id, firstName, lastName, phone, address, taxis);
-		this.userName = userName;
-		this.password = password;
-	}
-	public MainManager(String id, String firstName, String lastName, String phone, String address, String userName, String password) {
+		 String userName, String password) {
 		super(id, firstName, lastName, phone, address);
 		this.userName = userName;
 		this.password = password;
 	}
+
 
 	public String getUserName() {
 		return userName;
@@ -48,10 +38,11 @@ public class MainManager extends Manager{
 
 	@Override
 	public String toString() {
-		return "MainManager [userName=" + userName + ", password=" + password + ", id=" + id + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", phone=" + phone + ", address=" + address + ", taxis="
-				+ Arrays.toString(taxis) + ", taxisNum=" + taxisNum + ", orders=" + Arrays.toString(orders)
-				+ ", ordersNum=" + ordersNum + "]";
+		return "MainManager [id=" + id + ", userName=" + userName + ", firstName=" + firstName + ", password="
+				+ password + ", lastName=" + lastName + ", phone=" + phone + ", address=" + address + ", taxies="
+				+ taxies + ", taxisNum=" + taxisNum + ", orders=" + orders + ", ordersNum=" + ordersNum + "]";
 	}
+
+	
 	
 }

@@ -37,7 +37,7 @@ public class Systemhw {
 
 	
 
-	public boolean addSubscription(Subscription newSubscription) {
+	public boolean addSubscription(Subscription newSubscription) { // ************************Done*************************
 		if(newSubscription==null) return false;
 		for(Subscription subscription:subscriptions) {
 			if(newSubscription.getSubCode().equals(subscription.getSubCode())) return false;
@@ -48,7 +48,7 @@ public class Systemhw {
 		return true;	
 	}
 	
-	public boolean removeSubscription(Subscription subscriptionToremove) {
+	public boolean removeSubscription(Subscription subscriptionToremove) { // ************************Done*************************
 		if(subscriptionToremove==null) return false;
 		boolean founded=false;
 		int index =0;
@@ -110,7 +110,7 @@ public class Systemhw {
 	
 
 	
-	public boolean addTaxi(Taxi newTaxi) {
+	public boolean addTaxi(Taxi newTaxi) { // ************************Done*************************
 		if(newTaxi==null) return false;
 		for(Taxi taxi:taxis) {
 			if(newTaxi.getTaxiCode().equals(taxi.getTaxiCode())) {
@@ -123,7 +123,7 @@ public class Systemhw {
 		return true;	
 	}
 	
-	public boolean removeTaxi(Taxi taxiToremove) {
+	public boolean removeTaxi(Taxi taxiToremove) { // ************************Done*************************
 		if(taxiToremove==null) return false;
 		boolean founded=false;
 		int index =0;
