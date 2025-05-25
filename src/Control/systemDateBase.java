@@ -46,9 +46,13 @@ public class systemDateBase {
         this.allOrderHashMap = new HashMap<>();
     }
 
+<<<<<<< HEAD
 
 
      //Getters
+=======
+    //Getters
+>>>>>>> 36e3fe199028acfc8607cc8e002a5ea72d2f93bb
     public MainManager getAdministrator() {
         return Administrator;
     }
@@ -77,8 +81,13 @@ public class systemDateBase {
         return allSubscribers;
     }
 
+<<<<<<< HEAD
   public ArrayList<Order> getOrdersOfSubscriber(String code) {
     return allOrderHashMap.getOrDefault(code, new ArrayList<>());
+=======
+    public HashMap<String, ArrayList<Order>> getAllOrderHashMap() {
+        return allOrderHashMap;
+>>>>>>> 36e3fe199028acfc8607cc8e002a5ea72d2f93bb
     }
 
     /*
@@ -143,7 +152,11 @@ public class systemDateBase {
      * Effect: If legal, removes manager from arraylist of managers
      * Output: True if removed succesfully, false otherwise
      */
+<<<<<<< HEAD
 	public boolean removeManager(Manager ManagerToRemove){
+=======
+	public boolean removeMainManager(Manager ManagerToRemove){
+>>>>>>> 36e3fe199028acfc8607cc8e002a5ea72d2f93bb
         if(ManagerToRemove == null){
             System.out.println("Can not remove null value");
             return false;
