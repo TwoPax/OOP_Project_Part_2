@@ -218,7 +218,7 @@ public class Main {
         }
     }
     /*
-     * Effect: Getting subscriber values from user, adds it to our DataBase *********************************FIX*******************************
+     * Effect: Getting subscriber values from user, adds it to our DataBase 
      */
     public static void addSubscriber() 
     {
@@ -344,16 +344,16 @@ public class Main {
     }
     
    /*
-    * Effect: Getting manager's ID, if manager exist, shows regular manager's menu *****************************Fix*******************************
+    * Effect: Getting manager's ID, if manager exist, shows regular manager's menu 
     */
     public static void loginManager() {
         System.out.print("Manager ID: ");
         String id = scanner.nextLine();
         boolean founded = false;
-        for (Manager m : ourSystem.getManagers()) {
+        for (Manager m : ourSystem.getAllManagers()) {
             if (!(m instanceof MainManager) && m.getId().equals(id)) {
                 System.out.println("Hello Manager " + m.getFirstName());
-                founded=true;
+                founded = true;
                 managerMenu(m);
             }
         }
@@ -383,9 +383,10 @@ public class Main {
 
    
     /*
-     * Effect: Getting order values from user, if legal, adds order to DataBase *************************************Fix*************************************
+     * Effect: Getting order values from user, if legal, adds order to DataBase 
      */
     public static void addOrder(Manager manager) {
+
     	System.out.print("Order ID: ");
         String orderId = scanner.nextLine();
         System.out.print("Subscriber ID: ");
@@ -394,7 +395,7 @@ public class Main {
         String taxiCode = scanner.nextLine();
 
         Subscription sub = null;
-        for (Subscription s : ourSystem.getSubscriptions()) {
+        for (Subscription s : ourSystem.getSubscriptions()) { // Checking if subscriber exists
             if (s != null && s.getSubCode().equals(subId)) {
                 sub = s;
                 break;
@@ -403,7 +404,7 @@ public class Main {
 
         Taxi taxi = null;
         for (Taxi t : ourSystem.getTaxis()) {
-            if (t != null && t.getTaxiCode().equals(taxiCode)) {
+            if (t != null && t.getTaxiCode().equals(taxiCode)) { // Checking if taxi exists
                 taxi = t;
                 break;
             }
@@ -427,10 +428,11 @@ public class Main {
         int hour = getValidHour();
         scanner.nextLine();
 
-        orders[orderCount] = new Order(orderId,manager.getId(), day, month, hour,subId ,taxi, taxi.getMinPrice());
-        orderCount++;
+        //Creating new Order and adding it to all orders
+        Order newO = new Order(orderId, manager.getId(), day, month, hour, subId, taxi, taxi.getMinPrice()); 
+        ourSystem.addOrder(newO);
+
         taxi.setAvailable(false);
-        System.out.println("Order added.");
         managerMenu(manager);
     }
 
@@ -438,23 +440,24 @@ public class Main {
      * Effect: Getting existing order's number, changing taxi if legal *********************Fix**********************
      */
     public static void changeTaxiInOrder(Manager manager) {
-    	if(orderCount==0) {
+        int orderCount = ourSystem.getAllOrders().size(); //Getting number of orders
+    	if(orderCount == 0) {
             System.out.print("There are no orders yet!");
             managerMenu(manager);
 
     	}
         System.out.print("Orders codes : ");
-        for(int i=0 ; i<orderCount ; i++)
-        	System.out.print(orders[i].getOrderNum()+" , ");
+        for(Order order : ourSystem.getAllOrders())
+        	System.out.print(order.getOrderNum()+" , ");
         System.out.println();
         System.out.print("Enter order's code that  you want to change : ");
 
         String num = scanner.nextLine();
         Order o = null;
 
-        for(int i=0 ; i<orderCount ; i++) {
-        	if(orders[i].getOrderNum().equals(num))
-        		 o = orders[i];
+        for(Order order : ourSystem.getAllOrders()) {
+        	if(order.getOrderNum().equals(num))
+        		 o = order;
         }
         if (o==null) {
             System.out.println("Invalid order number.");
@@ -462,7 +465,7 @@ public class Main {
         }
 
         Taxi oldTaxi = null;
-        for (Taxi t : ourSystem.getTaxis()) {
+        for (Taxi t : ourSystem.getAllTaxies()) {
             if (t != null && t.getTaxiCode().equals(o.getTaxi().getTaxiCode())) {
                 oldTaxi = t;
                 break;
@@ -478,7 +481,7 @@ public class Main {
         String newCode = scanner.nextLine();
 
         Taxi newTaxi = null;
-        for (Taxi t : ourSystem.getTaxis()) {
+        for (Taxi t : ourSystem.getAllTaxies()) {
             if (t != null && t.getTaxiCode().equals(newCode) && t.isAvailable()) {
                 newTaxi = t;
                 break;
