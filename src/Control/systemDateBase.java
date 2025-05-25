@@ -3,11 +3,19 @@ package Control;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+<<<<<<< HEAD
 import java.util.concurrent.Flow.Subscription;
+=======
+
+import Model.Manager; 
+>>>>>>> 00f1357d4c340514744d85c65a8a9a7d03e08eac
 import Model.MainManager;
 import Model.Order;
 import Model.Taxi;
 import Model.Station;
+import Model.ExpressTaxi;
+import Model.Subscription;
+
 
 public class systemDateBase {
 
@@ -246,7 +254,7 @@ public class systemDateBase {
      */
     public boolean addOrderByCode(String subCode, Order newOrder){
         if(subCode == null || newOrder == null){
-            System.out.println("Enter none null values");
+            System.out.println("Enter non null values");
             return false;
         }
         if(allOrders.contains(newOrder)){
@@ -268,6 +276,70 @@ public class systemDateBase {
         return true;
         } 
 
+
+
+    /* 
+    Input: station (Station) – the station to query
+    Output: ArrayList<String> containing codes of all available taxis in that station
+    */
+
+    public ArrayList<String> listAvailableTaxiCodesInStation(Station station)
+    {
+            ArrayList<String> result = new ArrayList<>();
+            if (station == null) 
+            {
+                    System.out.println("Station cannot be null");
+                    return result ;
+            }
+            for (Taxi taxi : station.getTaxis()) 
+            {
+            if (taxi.isAvailable()) 
+                {
+                    result.add(taxi.getTaxiCode());
+                }
+            }
+            return result;
+    }
+
+    /* Input: sub (Subscription) – the subscriber whose orders are examined
+    Output: ArrayList<ExpressTaxi> containing every ExpressTaxi ordered by that subscriber 
+    */
+
+    public ArrayList<ExpressTaxi> getExpressTaxisBySubscriber(Subscription sub)
+
+    {
+    ArrayList<ExpressTaxi> expressList = new ArrayList<>();
+    
+        if (sub == null) 
+        {
+            System.out.println("Subscriber cannot be null");
+            return expressList;
+        }
+
+        String code = sub.getSubCode();
+        ArrayList<Taxi> ordered = allOrdersHashtable.get(code); 
+
+        if(ordered == null)
+        {
+            return expressList;
+        }
+
+        for (Taxi taxi : ordered) 
+        {
+            if (taxi instanceof ExpressTaxi) 
+            {
+                expressList.add((ExpressTaxi) taxi);
+            }
+        }
+        return expressList;
+
+    }
+    public ArrayList<Subscription> getSubscriptions() {
+    return allSubscribers;
+    }
+    public ArrayList<Taxi> getTaxis() {
+        return allTaxies;
+    }
 
     } 
 
