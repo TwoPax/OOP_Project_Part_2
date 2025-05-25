@@ -177,7 +177,7 @@ public class Main {
         String user = scanner.nextLine();
         System.out.print("Password: ");
         String pass = scanner.nextLine();
-        for (Manager m : ourSystem.getManagers()) {
+        for (Manager m : ourSystem.getAllManagers()) {
             if (m instanceof MainManager ) {
             	MainManager mm = (MainManager) m;
                 if (mm.getUserName().equals(user) && mm.getPassword().equals(pass)) {
@@ -348,7 +348,7 @@ public class Main {
         }
 
         boolean m2=false;
-        for (Manager m : ourSystem.getManagers()) {
+        for (Manager m : ourSystem.getAllManagers()) {
             if (m != null && m.getId().equals(managerId)) {
             	m.addTaxi(taxi);
                 System.out.println("Taxi " + taxiCode + " assigned to Manager " + m.getFirstName());
@@ -366,7 +366,7 @@ public class Main {
         System.out.print("Manager ID: ");
         String id = scanner.nextLine();
         boolean founded = false;
-        for (Manager m : ourSystem.getManagers()) {
+        for (Manager m : ourSystem.getAllManagers()) {
             if (!(m instanceof MainManager) && m.getId().equals(id)) {
                 System.out.println("Hello Manager " + m.getFirstName());
                 founded=true;
@@ -569,7 +569,15 @@ public class Main {
      * Effect: Prints all orders by subscriber   ******************************Fix****************************
      */
     public static void printSubscriberOrders(Subscription sub) {
-        boolean found = false;
+
+        ArrayList<Order> orders =ourSystem.getOrdersOfSubscriber(sub.getSubCode());     
+        
+        if (orders.isEmpty()) 
+        {
+        System.out.println("No orders found for this subscriber.");
+        return;
+        }
+        
         for (int i = 0; i < orderCount; i++) {
             if (orders[i].getSubCode().equals(sub.getSubCode())) {
                 System.out.println(orders[i]);
