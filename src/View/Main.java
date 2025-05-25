@@ -263,7 +263,7 @@ public class Main {
         	manager = new MainManager(id, fn, ln, phone, addr, un, pw);
 
         }
-        boolean added = ourSystem.addMainManager(manager);       // addManager(Manager)
+        boolean added = ourSystem.addManager(manager);       // addManager(Manager)
 
         if(added ) 
         {
@@ -282,7 +282,7 @@ public class Main {
         System.out.print("Available (true/false): "); boolean avail = scanner.nextBoolean();
         System.out.print("Min price: "); double price = getValidPrice();
         scanner.nextLine();
-        
+
         boolean added=false;
 
         if (type.equals("1")) {

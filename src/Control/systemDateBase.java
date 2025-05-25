@@ -3,19 +3,14 @@ package Control;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import Model.*;
 
-import Model.MainManager;
-import Model.Order;
-import Model.Taxi;
-import Model.Station;
-import Model.ExpressTaxi;
-import Model.Subscription;
 
 
 public class systemDateBase {
 
-    private MainManager Administrator; // The Administrator of the program - user name "system", password "12345" - initilized in constructors
-    private ArrayList<MainManager> allMainManagers; // Array list of all Main Managers
+    private MainManager Administrator = new MainManager(); // The Administrator of the program - user name "system", password "12345" - initilized in constructors
+    private ArrayList<Manager> allManagers; // Array list of all Managers
     private ArrayList<Taxi> allTaxies; // Array list of all taxies
     private Hashtable<String, ArrayList<Taxi>> allOrdersHashtable; // Hashtable of all orders, key - subCode (String), value ArrayList<Taxi>
     private ArrayList<Station> allStations; // Array list of all stations
@@ -24,13 +19,13 @@ public class systemDateBase {
     private HashMap<String,ArrayList<Order>> allOrderHashMap; // HashMap of all orders, key - subCode (String), value ArrayList<Order>
 
     //Constructors
-    public systemDateBase(ArrayList<MainManager> allMainManagers, ArrayList<Taxi> allTaxies,
+    public systemDateBase(ArrayList<MainManager> allManagers, ArrayList<Taxi> allTaxies,
             Hashtable<String, ArrayList<Taxi>> allOrdersHashtable, ArrayList<Station> allStations,
             ArrayList<Order> allOrders, ArrayList<Subscription> allSubscribers,
             HashMap<String, ArrayList<Order>> allOrderHashMap) {
         this.Administrator.setUserName("system");
         this.Administrator.setPassword("12345");
-        this.allMainManagers = new ArrayList<>();
+        this.allManagers = new ArrayList<>();
         this.allTaxies = new ArrayList<>();
         this.allOrdersHashtable = new Hashtable<>();
         this.allStations = new ArrayList<>();
@@ -42,7 +37,7 @@ public class systemDateBase {
     public systemDateBase(){
         this.Administrator.setUserName("system");
         this.Administrator.setPassword("12345");
-        this.allMainManagers = new ArrayList<>();
+        this.allManagers = new ArrayList<>();
         this.allTaxies = new ArrayList<>();
         this.allOrdersHashtable = new Hashtable<>();
         this.allStations = new ArrayList<>();
@@ -65,7 +60,7 @@ public class systemDateBase {
             return false;
         }
         allSubscribers.add(newSubscription);
-        System.err.println("Subscriber added succesfully");
+        System.out.println("Subscriber added succesfully");
         return true;
     }
 
@@ -90,40 +85,40 @@ public class systemDateBase {
     }
 
     /*
-     * Input: A new Main manager
-     * Effect: If its a new Main manager and Main manager is legal, adds it to array list of Main managers
+     * Input: A new manager
+     * Effect: If its a new  manager and  manager is legal, adds it to array list of  managers
      * Output: True if added succesfully, false otherwise
      */
-    public boolean addMainManager(MainManager newMainManager){
-        if(newMainManager == null){
+    public boolean addManager(Manager newManager){
+        if(newManager == null){
             System.out.println("Enter none null value");
             return false;
         }
-        if(allMainManagers.contains(newMainManager)){
-            System.out.println("Main manager already exists");
+        if(allManagers.contains(newManager)){
+            System.out.println("Manager already exists");
             return false;
         }
-        allMainManagers.add(newMainManager);
-        System.out.println("Main manager added succesfully");
+        allManagers.add(newManager);
+        System.out.println("Manager added succesfully");
         return true;
     }
     /*
-     * Input: A main manager to remove
-     * Effect: If legal, removes main manager from arraylist of main managers
+     * Input: A manager to remove
+     * Effect: If legal, removes manager from arraylist of managers
      * Output: True if removed succesfully, false otherwise
      */
-	public boolean removeMainManager(MainManager mainManagerToRemove){
-        if(mainManagerToRemove == null){
+	public boolean removeManager(Manager ManagerToRemove){
+        if(ManagerToRemove == null){
             System.out.println("Can not remove null value");
             return false;
         }
-        if(!allMainManagers.contains(mainManagerToRemove)){
-            System.out.println("Failure - Main manager is not in our system");
+        if(!allManagers.contains(ManagerToRemove)){
+            System.out.println("Failure - Manager is not in our system");
             return false;
         }
-        int MMIndex = allMainManagers.indexOf(mainManagerToRemove);
-        allMainManagers.remove(MMIndex);
-        System.out.println("Main manager removed succesfully");
+        int MIndex = allManagers.indexOf(ManagerToRemove);
+        allManagers.remove(MIndex);
+        System.out.println("Manager removed succesfully");
         return true;
     }
 
@@ -270,7 +265,9 @@ public class systemDateBase {
         System.out.println("Order added succesfully to Subscriber order list");
         return true;
         } 
-        
+
+
+
     /* 
     Input: station (Station) – the station to query
     Output: ArrayList<String> containing codes of all available taxis in that station
@@ -308,7 +305,7 @@ public class systemDateBase {
             System.out.println("Subscriber cannot be null");
             return expressList;
         }
-
+ 
         String code = sub.getSubCode();
         ArrayList<Taxi> ordered = allOrdersHashtable.get(code); 
 
@@ -327,7 +324,6 @@ public class systemDateBase {
         return expressList;
 
     }
-
     public ArrayList<Subscription> getSubscriptions() {
     return allSubscribers;
     }
@@ -348,4 +344,3 @@ public class systemDateBase {
     
 
     
-
