@@ -3,23 +3,14 @@ package Control;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-<<<<<<< HEAD
 import java.util.concurrent.Flow.Subscription;
-=======
+import Model.*;
 
-import Model.Manager; 
->>>>>>> 00f1357d4c340514744d85c65a8a9a7d03e08eac
-import Model.MainManager;
-import Model.Order;
-import Model.Taxi;
-import Model.Station;
-import Model.ExpressTaxi;
-import Model.Subscription;
 
 
 public class systemDateBase {
 
-    private MainManager Administrator; // The Administrator of the program - user name "system", password "12345" - initilized in constructors
+    private MainManager Administrator = new MainManager(); // The Administrator of the program - user name "system", password "12345" - initilized in constructors
     private ArrayList<MainManager> allMainManagers; // Array list of all Main Managers
     private ArrayList<Taxi> allTaxies; // Array list of all taxies
     private Hashtable<String, ArrayList<Taxi>> allOrdersHashtable; // Hashtable of all orders, key - subCode (String), value ArrayList<Taxi>
@@ -315,7 +306,7 @@ public class systemDateBase {
             System.out.println("Subscriber cannot be null");
             return expressList;
         }
-
+ 
         String code = sub.getSubCode();
         ArrayList<Taxi> ordered = allOrdersHashtable.get(code); 
 
