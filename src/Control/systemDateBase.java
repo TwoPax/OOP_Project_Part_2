@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 
+import Model.Manager; 
 import Model.MainManager;
 import Model.Order;
 import Model.Taxi;
@@ -299,7 +300,7 @@ public class systemDateBase {
     /* Input: sub (Subscription) – the subscriber whose orders are examined
     Output: ArrayList<ExpressTaxi> containing every ExpressTaxi ordered by that subscriber 
     */
-    
+
     public ArrayList<ExpressTaxi> getExpressTaxisBySubscriber(Subscription sub)
 
     {
@@ -329,6 +330,13 @@ public class systemDateBase {
         return expressList;
 
     }
+    public ArrayList<Subscription> getSubscriptions() {
+    return allSubscribers;
+    }
+    public ArrayList<Taxi> getTaxis() {
+        return allTaxies;
+    }
+
     } 
 
 

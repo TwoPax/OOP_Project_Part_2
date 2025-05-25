@@ -1,25 +1,21 @@
 package View;
 import java.util.*;
 
-import Control.Systemhw;
 import Model.*;
+import Control.systemDateBase;
 
 
 public class Main {
 	
     static Scanner scanner = new Scanner(System.in);
-    
-    static Systemhw ourSystem = new Systemhw(); //********************************************Fix*********************************************** 
-    static Order[] orders = new Order[100];
-    static int orderCount = 0;
+    static systemDateBase ourSystem = new systemDateBase();
     
 	public static void main(String[] args) {
 		 initializeData();
-
-         
 	     mainMenu();
 	     return;
 	}
+    
 	/*
      * Effect: Shows main menu
      */
@@ -34,16 +30,25 @@ public class Main {
             System.out.print("Choose: ");
             String ch = scanner.nextLine();
            
-            if (ch.equals("1")) {
+            if (ch.equals("1")) 
+            {
                 loginMainManager();
-            } else if (ch.equals("2")) {
+            } 
+            else if (ch.equals("2")) 
+            {
                 loginManager();
-            } else if (ch.equals("3")) {
+            }
+             else if (ch.equals("3"))
+            {
                 loginSubscriber();
-            } else if (ch.equals("0")) {
+            } 
+            else if (ch.equals("0")) 
+            {
                 System.out.println("Goodbye!");
                 break;
-            } else {
+            } 
+            else 
+            {
                 System.out.println("Invalid option.");
             }
         }
@@ -52,7 +57,8 @@ public class Main {
     /*
      * Effect: Initialize all data *************************************************Fix***********************************
      */
-    public static void initializeData() { 
+    public static void initializeData() 
+    { 
     	ourSystem.addManager(new MainManager("9001", "Maria", "Fahoum", "0500000000", "Central Perk", "system", "12345"));
     	ourSystem.addManager(new Manager("M1", "Mike", "Hannigan", "0500000001", "NYC"));
     	ourSystem.addManager(new Manager("M2", "Janice", "Hosenstein", "0500000002", "Brooklyn"));
@@ -74,8 +80,8 @@ public class Main {
     	ourSystem.addTaxi(new Taxi("T2", true, 40));
     	ourSystem.addTaxi(new ExpressTaxi("T3", true, 45, true, 10));
     	ourSystem.addTaxi(new ExpressTaxi("T4", true, 50, true, 12));
-    	ourSystem.addTaxi(new IntercityTaxi("T5", true, 60, new String[]{"Tel Aviv", "Haifa"}, 15, 3));
-    	ourSystem.addTaxi(new IntercityTaxi("T6", true, 70, new String[]{"Jerusalem", "Eilat"}, 20, 5));
+    	ourSystem.addTaxi(new IntercityTaxi("T5", true, 60,new ArrayList<>(Arrays.asList("Tel Aviv", "Haifa")),15, 3));
+        ourSystem.addTaxi(new IntercityTaxi("T6", true, 70,new ArrayList<>(Arrays.asList("Jerusalem", "Eilat")),20, 5));
     	ourSystem.addTaxi(new Taxi("T7", true, 30));
     	ourSystem.addTaxi(new ExpressTaxi("T8", true, 55, true, 13));
     	ourSystem.addTaxi(new Taxi("T9", true, 32));
@@ -214,14 +220,19 @@ public class Main {
     /*
      * Effect: Getting subscriber values from user, adds it to our DataBase *********************************FIX*******************************
      */
-    public static void addSubscriber() {
+    public static void addSubscriber() 
+    {
         System.out.print("ID: "); String id = scanner.nextLine();
         System.out.print("First name: "); String fn = scanner.nextLine();
         System.out.print("Last name: "); String ln = scanner.nextLine();
         System.out.print("Phone: "); String phone = scanner.nextLine();
         System.out.print("Address: "); String addr = scanner.nextLine();
-        boolean added = ourSystem.addSubscription(new Subscription(id, fn, ln, phone, addr));
-        if(added) {
+
+        Subscription newSub = new Subscription(id, fn, ln, phone, addr);
+        boolean added = ourSystem.addSubscription(newSub);
+
+        if(added) 
+        {
         	System.out.println("Subscriber added.");
         }
         else System.out.println("Failed to add subscriber .");
@@ -233,20 +244,27 @@ public class Main {
     public static void addManager() {
         System.out.println("Type: 1. Regular  2. Main");
         int type = scanner.nextInt(); scanner.nextLine();
+
         System.out.print("ID: "); String id = scanner.nextLine();
         System.out.print("First name: "); String fn = scanner.nextLine();
         System.out.print("Last name: "); String ln = scanner.nextLine();
         System.out.print("Phone: "); String phone = scanner.nextLine();
         System.out.print("Address: "); String addr = scanner.nextLine();
-        boolean added;
-        if (type == 1) {
-        	added = ourSystem.addManager(new Manager(id, fn, ln, phone, addr));
-        } else {
+
+        Manager manager;
+        if (type == 1) 
+        {
+        	manager = new Manager(id, fn, ln, phone, addr);
+        } 
+        else 
+        {
             System.out.print("Username: "); String un = scanner.nextLine();
             System.out.print("Password: "); String pw = scanner.nextLine();
-        	added = ourSystem.addManager(new MainManager(id, fn, ln, phone, addr, un, pw));
+        	manager = new MainManager(id, fn, ln, phone, addr, un, pw);
 
         }
+        boolean added = ourSystem.addMainManager(manager);       // addManager(Manager)
+
         if(added ) {
         	System.out.println("Manager added.");
     }
@@ -368,8 +386,8 @@ public class Main {
      * Effect: Getting order values from user, if legal, adds order to DataBase *************************************Fix*************************************
      */
     public static void addOrder(Manager manager) {
-    	 System.out.print("Order ID: ");
-         String orderId = scanner.nextLine();
+    	System.out.print("Order ID: ");
+        String orderId = scanner.nextLine();
         System.out.print("Subscriber ID: ");
         String subId = scanner.nextLine();
         System.out.print("Taxi Code: ");

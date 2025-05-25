@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 public class IntercityTaxi extends Taxi {
+	
 	private ArrayList<String> cities;
 	private int citiesNum ;
 	private double extraPrice;
