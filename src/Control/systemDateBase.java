@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 
-import Model.Manager; 
 import Model.MainManager;
 import Model.Order;
 import Model.Taxi;
@@ -271,9 +270,7 @@ public class systemDateBase {
         System.out.println("Order added succesfully to Subscriber order list");
         return true;
         } 
-
-
-
+        
     /* 
     Input: station (Station) – the station to query
     Output: ArrayList<String> containing codes of all available taxis in that station
@@ -330,6 +327,7 @@ public class systemDateBase {
         return expressList;
 
     }
+
     public ArrayList<Subscription> getSubscriptions() {
     return allSubscribers;
     }

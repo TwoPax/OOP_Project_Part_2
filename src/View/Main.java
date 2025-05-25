@@ -265,9 +265,10 @@ public class Main {
         }
         boolean added = ourSystem.addMainManager(manager);       // addManager(Manager)
 
-        if(added ) {
+        if(added ) 
+        {
         	System.out.println("Manager added.");
-    }
+        }
         
         else System.out.println("Failed to add manager!");
         return;    }
@@ -281,7 +282,7 @@ public class Main {
         System.out.print("Available (true/false): "); boolean avail = scanner.nextBoolean();
         System.out.print("Min price: "); double price = getValidPrice();
         scanner.nextLine();
-
+        
         boolean added=false;
 
         if (type.equals("1")) {
@@ -583,9 +584,11 @@ public class Main {
         System.out.println("Details updated.");
         return;
     }
+
     /*
      * Effect: Getting a taxi code from user, if found, showing taxi details *************************Fix***************************
      */
+
     public  static void showTaxiDetails(Subscription sub) {
         System.out.print("Taxi Code: ");
         boolean founded=false;
