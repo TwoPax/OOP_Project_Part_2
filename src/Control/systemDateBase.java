@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.concurrent.Flow.Subscription;
-
 import Model.MainManager;
 import Model.Order;
 import Model.Taxi;
@@ -63,7 +62,7 @@ public class systemDateBase {
             return false;
         }
         allSubscribers.add(newSubscription);
-        System.err.println("Subscriber added succesfully");
+        System.out.println("Subscriber added succesfully");
         return true;
     }
 
