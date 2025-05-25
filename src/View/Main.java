@@ -192,7 +192,8 @@ public class Main {
      * Effect: Shows main manager menu
      */
     public static void mainManagerMenu() {
-        while (true) {
+        while (true) 
+        {
             System.out.println("\n--- Main Manager Menu ---");
             System.out.println("1. Add Subscriber");
             System.out.println("2. Add Manager");
@@ -216,6 +217,7 @@ public class Main {
             }
 
         }
+
     }
     /*
      * Effect: Getting subscriber values from user, adds it to our DataBase *********************************FIX*******************************
@@ -265,7 +267,7 @@ public class Main {
         }
         boolean added = ourSystem.addManager(manager);       // addManager(Manager)
 
-        if(added ) 
+        if(added) 
         {
         	System.out.println("Manager added.");
         }
@@ -285,34 +287,46 @@ public class Main {
 
         boolean added=false;
 
-        if (type.equals("1")) {
+        if (type.equals("1"))
+        {
             added = ourSystem.addTaxi(new Taxi(code, avail, price)) ;
-        } else if (type.equals("2")) {
-            System.out.print("City Taxi (true/false): "); boolean city = scanner.nextBoolean();
-            System.out.print("Extra Price: "); double extra = getValidPrice();
+        } 
+        else if (type.equals("2")) {
+            System.out.print("City Taxi (true/false): "); 
+            boolean city = scanner.nextBoolean();
+            System.out.print("Extra Price: "); 
+            double extra = getValidPrice();
             scanner.nextLine();
             added = ourSystem.addTaxi(new ExpressTaxi(code, avail, price, city, extra));
-        } else if (type.equals("3")) {
-            System.out.print("Number of cities: "); int n = scanner.nextInt(); scanner.nextLine();
-            String[] cities = new String[n];
+        } 
+        else if (type.equals("3")) {
+            System.out.print("Number of cities: "); 
+            int n = scanner.nextInt();
+            scanner.nextLine();
+
+            ArrayList<String> cities = new ArrayList<>();
+
             for (int j = 0; j < n; j++) {
                 System.out.print("City " + (j+1) + ": ");
-                cities[j] = scanner.nextLine();
+                cities.add( scanner.nextLine());
             }
-            System.out.print("Extra price: "); double extra =getValidPrice();
-            System.out.print("Max hours: "); int hours = getPositiveNumber();
+
+            System.out.print("Extra price: "); 
+            double extra =getValidPrice();
+            System.out.print("Max hours: "); 
+            int hours = getPositiveNumber();
             scanner.nextLine();
             added = ourSystem.addTaxi(new IntercityTaxi(code, avail, price, cities, extra, hours));
         }
-       if(added) {
+        if(added) 
+        {
     	   System.out.println("Taxi added.");
 
-       }
-    
-        
-       else System.out.println("failed to add Taxi");
-       return;
-    }
+        }
+
+        else System.out.println("failed to add Taxi");
+        return;
+        }
     /*
      * Effect: Getting a taxi code and manager's ID, adds taxi to manager's taxi list if legal ****************************Fix*****************************
      */
@@ -332,6 +346,7 @@ public class Main {
             System.out.println("Taxi not found.");
             return;
         }
+
         boolean m2=false;
         for (Manager m : ourSystem.getManagers()) {
             if (m != null && m.getId().equals(managerId)) {
