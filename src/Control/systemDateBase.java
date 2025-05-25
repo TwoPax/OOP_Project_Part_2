@@ -9,6 +9,7 @@ import Model.MainManager;
 import Model.Order;
 import Model.Taxi;
 import Model.Station;
+import Model.ExpressTaxi;
 
 public class systemDateBase {
 
@@ -247,7 +248,7 @@ public class systemDateBase {
      */
     public boolean addOrderByCode(String subCode, Order newOrder){
         if(subCode == null || newOrder == null){
-            System.out.println("Enter none null values");
+            System.out.println("Enter non null values");
             return false;
         }
         if(allOrders.contains(newOrder)){
@@ -269,6 +270,30 @@ public class systemDateBase {
         return true;
         } 
 
+
+
+    /* 
+    Input: station (Station) – the station to query
+    Output: ArrayList<String> containing codes of all available taxis in that station
+    */
+
+    public ArrayList<String> listAvailableTaxiCodesInStation(Station station)
+    {
+            ArrayList<String> result = new ArrayList<>();
+            if (station == null) 
+            {
+                    System.out.println("Station cannot be null");
+                    return result ;
+            }
+            for (Taxi taxi : station.getTaxis()) 
+            {
+            if (taxi.isAvailable()) 
+                {
+                    result.add(taxi.getTaxiCode());
+                }
+            }
+            return result;
+    }
 
     } 
 
