@@ -3,13 +3,14 @@ package Control;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.concurrent.Flow.Subscription;
 
 import Model.MainManager;
 import Model.Order;
 import Model.Taxi;
 import Model.Station;
 import Model.ExpressTaxi;
+import Model.Subscription;
+
 
 public class systemDateBase {
 
@@ -295,6 +296,39 @@ public class systemDateBase {
             return result;
     }
 
+    /* Input: sub (Subscription) – the subscriber whose orders are examined
+    Output: ArrayList<ExpressTaxi> containing every ExpressTaxi ordered by that subscriber 
+    */
+    
+    public ArrayList<ExpressTaxi> getExpressTaxisBySubscriber(Subscription sub)
+
+    {
+    ArrayList<ExpressTaxi> expressList = new ArrayList<>();
+    
+        if (sub == null) 
+        {
+            System.out.println("Subscriber cannot be null");
+            return expressList;
+        }
+
+        String code = sub.getSubCode();
+        ArrayList<Taxi> ordered = allOrdersHashtable.get(code); 
+
+        if(ordered == null)
+        {
+            return expressList;
+        }
+
+        for (Taxi taxi : ordered) 
+        {
+            if (taxi instanceof ExpressTaxi) 
+            {
+                expressList.add((ExpressTaxi) taxi);
+            }
+        }
+        return expressList;
+
+    }
     } 
 
 
