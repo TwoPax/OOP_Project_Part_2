@@ -3,7 +3,6 @@ package Control;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.concurrent.Flow.Subscription;
 import Model.*;
 
 
@@ -46,6 +45,40 @@ public class systemDateBase {
         this.allSubscribers = new ArrayList<>();
         this.allOrderHashMap = new HashMap<>();
     }
+
+    //Getters
+    public MainManager getAdministrator() {
+        return Administrator;
+    }
+
+    public ArrayList<Manager> getAllManagers() {
+        return allManagers;
+    }
+
+    public ArrayList<Taxi> getAllTaxies() {
+        return allTaxies;
+    }
+
+    public Hashtable<String, ArrayList<Taxi>> getAllOrdersHashtable() {
+        return allOrdersHashtable;
+    }
+
+    public ArrayList<Station> getAllStations() {
+        return allStations;
+    }
+
+    public ArrayList<Order> getAllOrders() {
+        return allOrders;
+    }
+
+    public ArrayList<Subscription> getAllSubscribers() {
+        return allSubscribers;
+    }
+
+    public HashMap<String, ArrayList<Order>> getAllOrderHashMap() {
+        return allOrderHashMap;
+    }
+
     /*
      * Input: A new Subscriber
      * Effect: If its a new subscriber and Subscriber is legal, adds it to array list of subscribers
