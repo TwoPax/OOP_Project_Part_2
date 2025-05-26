@@ -100,6 +100,7 @@ public class Manager {
 
 	public void setTaxies(ArrayList<Taxi> taxies) {
 		this.taxies = taxies;
+		this.taxisNum = taxies.size();
 	}
 
 	public ArrayList<Order> getOrders() {
@@ -108,6 +109,7 @@ public class Manager {
 
 	public void setOrders(ArrayList<Order> orders) {
 		this.orders = orders;
+		this.ordersNum = orders.size();
 	}
 
 	@Override
@@ -148,16 +150,13 @@ public class Manager {
 	 */
 	public boolean addTaxi(Taxi newTaxi) {
 		if(newTaxi == null){
-            System.out.println("Enter none null value");
             return false;
         }
         if(taxies.contains(newTaxi)){
-            System.out.println("Manager already incharge of this taxi");
             return false;
         }
         taxies.add(newTaxi);
 		taxisNum++;
-        System.out.println("Taxi added succesfully");
         return true;
 			
 	}
@@ -168,17 +167,14 @@ public class Manager {
 	 */
 	public boolean removeTaxi(Taxi taxiToremove) {
 		if(taxiToremove == null){
-			System.out.println("Cannot remove null values");
 			return false;
 		}
 		if(!taxies.contains(taxiToremove)){
-			System.out.println("Manager is not in charge of this taxi");
 			return false;
 		}
 		int taxiIndex = taxies.indexOf(taxiToremove);
 		taxies.remove(taxiIndex);
 		taxisNum--;
-		System.out.println("Manager is no longer in charge of this taxi");
 		return true;
 	}
 	
@@ -189,16 +185,13 @@ public class Manager {
 	 */
 	public boolean addOrder(Order newOrder) {
 		if(newOrder == null){
-            System.out.println("Enter none null value");
             return false;
         }
         if(orders.contains(newOrder)){
-            System.out.println("Manager already made that order");
             return false;
         }
         orders.add(newOrder);
 		ordersNum++;
-        System.out.println("Order added succesfully");
         return true;
 
 
@@ -211,17 +204,14 @@ public class Manager {
 	 */
 	public boolean removeOrder(Order orderToremove) {
 		if(orderToremove == null){
-			System.out.println("Cannot remove null values");
 			return false;
 		}
 		if(!orders.contains(orderToremove)){
-			System.out.println("This order does not exist in manager's list");
 			return false;
 		}
 		int orderIndex = orders.indexOf(orderToremove);
 		orders.remove(orderIndex);
 		ordersNum--;
-		System.out.println("Order is no longer in manager's list");
 		return true;
 		
 		

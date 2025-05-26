@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import Model.*;
 
-public class Systemhw {
+public class Systemhw { //OLD DB
 	private Subscription[] subscriptions;
 	private int subscriptionsNum;
 	private Manager[] managers;
@@ -37,7 +37,7 @@ public class Systemhw {
 
 	
 
-	public boolean addSubscription(Subscription newSubscription) { // ************************Done*************************
+	public boolean addSubscription(Subscription newSubscription) { 
 		if(newSubscription==null) return false;
 		for(Subscription subscription:subscriptions) {
 			if(newSubscription.getSubCode().equals(subscription.getSubCode())) return false;
@@ -48,7 +48,7 @@ public class Systemhw {
 		return true;	
 	}
 	
-	public boolean removeSubscription(Subscription subscriptionToremove) { // ************************Done*************************
+	public boolean removeSubscription(Subscription subscriptionToremove) {
 		if(subscriptionToremove==null) return false;
 		boolean founded=false;
 		int index =0;
@@ -110,7 +110,7 @@ public class Systemhw {
 	
 
 	
-	public boolean addTaxi(Taxi newTaxi) { // ************************Done*************************
+	public boolean addTaxi(Taxi newTaxi) { 
 		if(newTaxi==null) return false;
 		for(Taxi taxi:taxis) {
 			if(newTaxi.getTaxiCode().equals(taxi.getTaxiCode())) {
@@ -123,7 +123,7 @@ public class Systemhw {
 		return true;	
 	}
 	
-	public boolean removeTaxi(Taxi taxiToremove) { // ************************Done*************************
+	public boolean removeTaxi(Taxi taxiToremove) { 
 		if(taxiToremove==null) return false;
 		boolean founded=false;
 		int index =0;

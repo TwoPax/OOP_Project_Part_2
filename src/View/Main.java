@@ -55,7 +55,7 @@ public class Main {
         return;
     }
     /*
-     * Effect: Initialize all data *************************************************Fix***********************************
+     * Effect: Initialize all data
      */
     public static void initializeData() 
     { 
@@ -241,7 +241,7 @@ public class Main {
         mainManagerMenu();
     }
     /*
-     * Effect: Getting manager values form user, adds it to our DataBase *********************************Fix***********************************
+     * Effect: Getting manager values form user, adds it to our DataBase 
      */
     public static void addManager() {
         System.out.println("Type: 1. Regular  2. Main");
@@ -275,7 +275,7 @@ public class Main {
         else System.out.println("Failed to add manager!");
         return;    }
     /*
-     * Effect: Getting Taxi values form user, adds it to our DataBase *********************************Fix***********************************
+     * Effect: Getting Taxi values form user, adds it to our DataBase 
      */
     public static void addTaxi() {
         System.out.println("Type: 1. Regular 2. Express 3. InterCity");
@@ -328,7 +328,7 @@ public class Main {
         return;
         }
     /*
-     * Effect: Getting a taxi code and manager's ID, adds taxi to manager's taxi list if legal ****************************Fix*****************************
+     * Effect: Getting a taxi code and manager's ID, adds taxi to manager's taxi list if legal 
      */
     public static void assignTaxiToManager() {
         System.out.print("Taxi code: ");
@@ -453,7 +453,7 @@ public class Main {
     }
 
     /*
-     * Effect: Getting existing order's number, changing taxi if legal *********************Fix**********************
+     * Effect: Getting existing order's number, changing taxi if legal 
      */
     public static void changeTaxiInOrder(Manager manager) {
         int orderCount = ourSystem.getAllOrders().size(); //Getting number of orders
@@ -517,7 +517,7 @@ public class Main {
         managerMenu(manager);
     }
     /*
-     * Effect: Getting subscriber ID from user, if legal, logging in *****************************Fix*****************************
+     * Effect: Getting subscriber ID from user, if legal, logging in 
      */
     public static void loginSubscriber() {
         System.out.print("Subscriber ID: ");
@@ -569,7 +569,7 @@ public class Main {
         }
     }
     /*
-     * Effect: Prints all orders by subscriber   ******************************Fix****************************
+     * Effect: Prints all orders by subscriber 
      */
     public static void printSubscriberOrders(Subscription sub) {
 
@@ -610,7 +610,7 @@ public class Main {
     }
 
     /*
-     * Effect: Getting a taxi code from user, if found, showing taxi details *************************Fix***************************
+     * Effect: Getting a taxi code from user, if found, showing taxi details 
      */
 
     public  static void showTaxiDetails(Subscription sub) {
@@ -629,7 +629,7 @@ public class Main {
         
     }
     /*
-     * Showing all taxies???????!!!!!!!!!!! ********************Fix**************************
+     * Showing all taxies
      */
     public  static void displayAllTaxis() {
         System.out.println("\n--- All Taxis ---");

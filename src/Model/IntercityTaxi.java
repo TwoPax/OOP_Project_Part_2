@@ -91,15 +91,13 @@ public class IntercityTaxi extends Taxi {
 	 */
 	public boolean addCity(String newCity) {
 		if(newCity == null){
-			System.out.println("Cannot add null values");
 			return false;
 		}
 		if(cities.contains(newCity)){
-			System.out.println("City already exists");
 			return false;
 		}
 		cities.add(newCity);
-		System.out.println("City added succesfully");
+		citiesNum++;
 		return true;
 	}
 	/*
@@ -109,16 +107,14 @@ public class IntercityTaxi extends Taxi {
 	 */
 	public boolean removeCity(String cityToRemove){
 		if(cityToRemove == null){
-			System.out.println("Cannot remove a null value");
 			return false;
 		}
 		if(!cities.contains(cityToRemove)){
-			System.out.println("City does not exist in our system");
 			return false;
 		}
 		int cityIndex = cities.indexOf(cityToRemove);
 		cities.remove(cityIndex);
-		System.out.println("City removed succesfully");
+		citiesNum--;
 		return true;
 	}
 	

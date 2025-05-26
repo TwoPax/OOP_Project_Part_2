@@ -6,6 +6,7 @@ public class Station {
 	private String stationName;
 	private ArrayList<Taxi> taxiesInStation;
 	private int taxisNum;
+	//Constructors
 	public Station(String stationName, ArrayList<Taxi> taxis) {
 		super();
 		this.stationName = stationName;
@@ -13,7 +14,7 @@ public class Station {
 		this.taxisNum = taxis.size();
 	}
 	
-	//Constructors
+	
 	public Station(String stationName) {
 		super();
 		this.stationName = stationName;
@@ -45,6 +46,7 @@ public class Station {
 
 	public void setTaxis(ArrayList<Taxi> taxis) {
 		this.taxiesInStation = taxis;
+		this.taxisNum = taxis.size();
 	}
 	@Override
 	public String toString() {
@@ -86,16 +88,14 @@ public class Station {
 	 */
 	public boolean addTaxi(Taxi newTaxi) {
 		if(newTaxi==null){
-			System.out.println("Enter none null values");
 			return false;
 		}
 		if(taxiesInStation.contains(newTaxi)){
-			System.out.println("Taxi already in station");
 			return false;
 
 		}
 		taxiesInStation.add(newTaxi);
-		System.out.println("Taxi added succesfully to station");
+		taxisNum++;
 		return true;
 	}
 
@@ -106,16 +106,14 @@ public class Station {
 	 */
 	public boolean removeTaxi(Taxi taxiToremove) {
 		if(taxiToremove==null){
-			System.out.println("Can not remove null value");
 			return false;
 		}
 		if(!taxiesInStation.contains(taxiToremove)){
-			System.out.println("Failure - taxi is not in station");
 			return false;
 		}
 		int indexToRemove = taxiesInStation.indexOf(taxiToremove);
 		taxiesInStation.remove(indexToRemove);
-		System.out.println("Taxi removes succesfully from station");
+		taxisNum--;
 		return true;
 	}
 

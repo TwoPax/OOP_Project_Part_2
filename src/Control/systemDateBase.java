@@ -18,22 +18,7 @@ public class systemDateBase {
     private ArrayList<Subscription> allSubscribers; // Array list of all subscribers
     private HashMap<String,ArrayList<Order>> allOrderHashMap; // HashMap of all orders, key - subCode (String), value ArrayList<Order>
 
-    //Constructors
-    public systemDateBase(ArrayList<MainManager> allManagers, ArrayList<Taxi> allTaxies,
-            Hashtable<String, ArrayList<Taxi>> allOrdersHashtable, ArrayList<Station> allStations,
-            ArrayList<Order> allOrders, ArrayList<Subscription> allSubscribers,
-            HashMap<String, ArrayList<Order>> allOrderHashMap) {
-        this.Administrator.setUserName("system");
-        this.Administrator.setPassword("12345");
-        this.allManagers = new ArrayList<>();
-        this.allTaxies = new ArrayList<>();
-        this.allOrdersHashtable = new Hashtable<>();
-        this.allStations = new ArrayList<>();
-        this.allOrders = new ArrayList<>();
-        this.allSubscribers = new ArrayList<>();
-        this.allOrderHashMap = new HashMap<>();
-    }
-
+    //Constructor - Assigning userName and password for Administrator and setting all lists to be size 0
     public systemDateBase(){
         this.Administrator.setUserName("system");
         this.Administrator.setPassword("12345");
@@ -46,11 +31,7 @@ public class systemDateBase {
         this.allOrderHashMap = new HashMap<>();
     }
 
-
-
-     //Getters
-
-
+    //Getters
     public MainManager getAdministrator() {
         return Administrator;
     }
@@ -94,16 +75,13 @@ public class systemDateBase {
      * Output: True if added succesfully, false otherwise
      */
     public boolean addSubscription(Subscription newSubscription){
-        if(newSubscription == null){
-            System.out.println("Enter none null value");
+        if(newSubscription == null)
             return false;
-        }
-        if(allSubscribers.contains(newSubscription)){
-            System.out.println("Subscriber already exists");
+        
+        if(allSubscribers.contains(newSubscription))
             return false;
-        }
+            
         allSubscribers.add(newSubscription);
-        System.out.println("Subscriber added succesfully");
         return true;
     }
 
@@ -113,17 +91,14 @@ public class systemDateBase {
      * Output: True if removed succesfully, false otherwise
      */
 	public boolean removeSubscription(Subscription subscriptionToremove){
-        if(subscriptionToremove == null){
-            System.out.println("Can not remove null value");
+        if(subscriptionToremove == null)
             return false;
-        }
-        if(!allSubscribers.contains(subscriptionToremove)){
-            System.out.println("Failure - Subscriber is not in our system");
+        
+        if(!allSubscribers.contains(subscriptionToremove))
             return false;
-        }
+        
         int subIndex = allSubscribers.indexOf(subscriptionToremove);
         allSubscribers.remove(subIndex);
-        System.out.println("Subscriber removed succesfully");
         return true;
     }
 
@@ -133,16 +108,13 @@ public class systemDateBase {
      * Output: True if added succesfully, false otherwise
      */
     public boolean addManager(Manager newManager){
-        if(newManager == null){
-            System.out.println("Enter none null value");
+        if(newManager == null)
             return false;
-        }
-        if(allManagers.contains(newManager)){
-            System.out.println("Manager already exists");
+        
+        if(allManagers.contains(newManager))
             return false;
-        }
+        
         allManagers.add(newManager);
-        System.out.println("Manager added succesfully");
         return true;
     }
     /*
@@ -150,19 +122,16 @@ public class systemDateBase {
      * Effect: If legal, removes manager from arraylist of managers
      * Output: True if removed succesfully, false otherwise
      */
-	public boolean removeMainManager(Manager ManagerToRemove){
+	public boolean removeManager(Manager ManagerToRemove){
 
-        if(ManagerToRemove == null){
-            System.out.println("Can not remove null value");
+        if(ManagerToRemove == null)
             return false;
-        }
-        if(!allManagers.contains(ManagerToRemove)){
-            System.out.println("Failure - Manager is not in our system");
+        
+        if(!allManagers.contains(ManagerToRemove))
             return false;
-        }
+        
         int MIndex = allManagers.indexOf(ManagerToRemove);
         allManagers.remove(MIndex);
-        System.out.println("Manager removed succesfully");
         return true;
     }
 
@@ -173,16 +142,13 @@ public class systemDateBase {
      * Output: True if added succesfully, false otherwise
      */
     public boolean addTaxi(Taxi newTaxi){
-        if(newTaxi == null){
-            System.out.println("Enter none null value");
+        if(newTaxi == null)
             return false;
-        }
-        if(allTaxies.contains(newTaxi)){
-            System.out.println("Taxi already exists");
+        
+        if(allTaxies.contains(newTaxi))
             return false;
-        }
+        
         allTaxies.add(newTaxi);
-        System.out.println("Taxi added succesfully");
         return true;
     }
 
@@ -192,17 +158,14 @@ public class systemDateBase {
      * Output: True if removed succesfully, false otherwise
      */
 	public boolean removeTaxi(Taxi taxiToRemove){
-        if(taxiToRemove == null){
-            System.out.println("Can not remove null value");
+        if(taxiToRemove == null)
             return false;
-        }
-        if(!allTaxies.contains(taxiToRemove)){
-            System.out.println("Failure - taxi is not in our system");
+        
+        if(!allTaxies.contains(taxiToRemove))
             return false;
-        }
+        
         int taxiIndex = allTaxies.indexOf(taxiToRemove);
         allTaxies.remove(taxiIndex);
-        System.out.println("Taxi removed succesfully");
         return true;
     }
 
@@ -212,16 +175,13 @@ public class systemDateBase {
      * Output: True if added succesfully, false otherwise
      */
     public boolean addStation(Station newStation){
-        if(newStation == null){
-            System.out.println("Enter none null value");
+        if(newStation == null)
             return false;
-        }
-        if(allStations.contains(newStation)){
-            System.out.println("Station already exists");
+        
+        if(allStations.contains(newStation))
             return false;
-        }
+        
         allStations.add(newStation);
-        System.out.println("Station added succesfully");
         return true;
     }
 
@@ -231,17 +191,14 @@ public class systemDateBase {
      * Output: True if removed succesfully, false otherwise
      */
 	public boolean removeStation(Station stationToRemove){
-        if(stationToRemove == null){
-            System.out.println("Can not remove null value");
+        if(stationToRemove == null)
             return false;
-        }
-        if(!allStations.contains(stationToRemove)){
-            System.out.println("Failure - Station is not in our system");
+        
+        if(!allStations.contains(stationToRemove))
             return false;
-        }
+        
         int stationIndex = allStations.indexOf(stationToRemove);
         allStations.remove(stationIndex);
-        System.out.println("Station removed succesfully");
         return true;
     }
 
@@ -251,16 +208,13 @@ public class systemDateBase {
      * Output: True if added succesfully, false otherwise
      */
     public boolean addOrder(Order newOrder){
-        if(newOrder == null){
-            System.out.println("Enter none null value");
+        if(newOrder == null)
             return false;
-        }
-        if(allOrders.contains(newOrder)){
-            System.out.println("Order already exists");
+        
+        if(allOrders.contains(newOrder))
             return false;
-        }
+        
         allOrders.add(newOrder);
-        System.out.println("Order added succesfully");
         return true;
     }
     /*
@@ -269,17 +223,14 @@ public class systemDateBase {
      * Output: True if removed succesfully, false otherwise
      */
 	public boolean removeOrder(Order orderToRemove){
-        if(orderToRemove == null){
-            System.out.println("Can not remove null value");
+        if(orderToRemove == null)
             return false;
-        }
-        if(!allOrders.contains(orderToRemove)){
-            System.out.println("Failure - Order is not in our system");
+        
+        if(!allOrders.contains(orderToRemove))
             return false;
-        }
+        
         int orderIndex = allOrders.indexOf(orderToRemove);
         allOrders.remove(orderIndex);
-        System.out.println("Order removed succesfully");
         return true;
     }
     /*
@@ -288,26 +239,22 @@ public class systemDateBase {
      * Output: True if addes succesfully, false otherwise
      */
     public boolean addOrderByCode(String subCode, Order newOrder){
-        if(subCode == null || newOrder == null){
-            System.out.println("Enter non null values");
+        if(subCode == null || newOrder == null)
             return false;
-        }
-        if(allOrders.contains(newOrder)){
-            System.out.println("Order already exists");
+        
+        if(allOrders.contains(newOrder))
             return false;
-        }
+        
         if(!this.allOrderHashMap.containsKey(subCode)){// If key does not exist in HashMap
             this.allOrderHashMap.put(subCode, new ArrayList<>());
             ArrayList<Order> newSubOrders = this.allOrderHashMap.get(subCode);
             newSubOrders.add(newOrder); // Add order to HashMap
             allOrders.add(newOrder); // Add order to all Orders
-            System.out.println("Subscriber and Order added succesfully");
             return true;
         }
         ArrayList<Order> existingSubOrders = this.allOrderHashMap.get(subCode);
         existingSubOrders.add(newOrder);
         allOrders.add(newOrder); // Add order to all Orders
-        System.out.println("Order added succesfully to Subscriber order list");
         return true;
         } 
 
@@ -323,7 +270,6 @@ public class systemDateBase {
             ArrayList<String> result = new ArrayList<>();
             if (station == null) 
             {
-                    System.out.println("Station cannot be null");
                     return result ;
             }
             for (Taxi taxi : station.getTaxis()) 
@@ -347,7 +293,6 @@ public class systemDateBase {
     
         if (sub == null) 
         {
-            System.out.println("Subscriber cannot be null");
             return expressList;
         }
  
