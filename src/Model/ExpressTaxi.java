@@ -3,6 +3,7 @@ package Model;
 public class ExpressTaxi extends Taxi{
 	private boolean cityTaxi ;
 	private double extraPrice;
+	
 	//Constructors
 	public ExpressTaxi(String taxiCode, boolean available, double minPrice, boolean cityTaxi, double extraPrice) {
 		super(taxiCode, available, minPrice);

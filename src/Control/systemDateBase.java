@@ -9,7 +9,7 @@ import Model.*;
 
 public class systemDateBase {
 
-    private MainManager Administrator = new MainManager(); // The Administrator of the program - user name "system", password "12345" - initilized in constructors
+    private MainManager Administrator = new MainManager(); // The Administrator of the program - user name "system", password "12345" name "Admin" - initilized in constructor
     private ArrayList<Manager> allManagers; // Array list of all Managers
     private ArrayList<Taxi> allTaxies; // Array list of all taxies
     private Hashtable<String, ArrayList<Taxi>> allOrdersHashtable; // Hashtable of all orders, key - subCode (String), value ArrayList<Taxi>
@@ -20,9 +20,11 @@ public class systemDateBase {
 
     //Constructor - Assigning userName and password for Administrator and setting all lists to be size 0
     public systemDateBase(){
+        this.allManagers = new ArrayList<>();
+        this.Administrator.setFirstName("Admin");
         this.Administrator.setUserName("system");
         this.Administrator.setPassword("12345");
-        this.allManagers = new ArrayList<>();
+        this.allManagers.add(Administrator);//Adding Administrator to list of all main managers
         this.allTaxies = new ArrayList<>();
         this.allOrdersHashtable = new Hashtable<>();
         this.allStations = new ArrayList<>();
@@ -261,10 +263,9 @@ public class systemDateBase {
 
 
     /* 
-    Input: station (Station) – the station to query
-    Output: ArrayList<String> containing codes of all available taxis in that station
+    * Input: station (Station) – the station to query
+    * Output: ArrayList<String> containing codes of all available taxies in that station
     */
-
     public ArrayList<String> listAvailableTaxiCodesInStation(Station station)
     {
             ArrayList<String> result = new ArrayList<>();
@@ -282,10 +283,10 @@ public class systemDateBase {
             return result;
     }
 
-    /* Input: sub (Subscription) – the subscriber whose orders are examined
-    Output: ArrayList<ExpressTaxi> containing every ExpressTaxi ordered by that subscriber 
-    */
-
+    /*
+     * Input: sub (Subscription) – the subscriber whose orders are examined
+     * Output: ArrayList<ExpressTaxi> containing every ExpressTaxi ordered by that subscriber 
+     */
     public ArrayList<ExpressTaxi> getExpressTaxisBySubscriber(Subscription sub)
 
     {
@@ -314,13 +315,6 @@ public class systemDateBase {
         return expressList;
 
     }
-    public ArrayList<Subscription> getSubscriptions() {
-    return allSubscribers;
-    }
-    public ArrayList<Taxi> getTaxis() {
-        return allTaxies;
-    }
-
     } 
 
 

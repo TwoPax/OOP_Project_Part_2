@@ -43,6 +43,7 @@ public class IntercityTaxi extends Taxi {
 
 	public void setCities(ArrayList<String> cities) {
 		this.cities = cities;
+		this.citiesNum = cities.size();
 	}
 
 

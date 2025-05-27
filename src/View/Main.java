@@ -4,23 +4,22 @@ import java.util.*;
 import Model.*;
 import Control.systemDateBase;
 
-
 public class Main {
-	
+    
     static Scanner scanner = new Scanner(System.in);
     static systemDateBase ourSystem = new systemDateBase();
     
-	public static void main(String[] args) {
-		 initializeData();
-	     mainMenu();
-	     return;
-	}
+    public static void main(String[] args) {
+        initializeData();
+        mainMenu();
+        scanner.close();
+    }
     
-	/*
+    /*
      * Effect: Shows main menu
      */
-	public static void mainMenu() {
-	
+    public static void mainMenu() {
+    
         while (true) {
             System.out.println("\n--- Main Menu ---");
             System.out.println("1. Login as Main Manager");
@@ -29,7 +28,7 @@ public class Main {
             System.out.println("0. Exit");
             System.out.print("Choose: ");
             String ch = scanner.nextLine();
-           
+            
             if (ch.equals("1")) 
             {
                 loginMainManager();
@@ -52,40 +51,39 @@ public class Main {
                 System.out.println("Invalid option.");
             }
         }
-        return;
     }
     /*
      * Effect: Initialize all data
      */
     public static void initializeData() 
     { 
-    	ourSystem.addManager(new MainManager("9001", "Maria", "Fahoum", "0500000000", "Central Perk", "system", "12345"));
-    	ourSystem.addManager(new Manager("M1", "Mike", "Hannigan", "0500000001", "NYC"));
-    	ourSystem.addManager(new Manager("M2", "Janice", "Hosenstein", "0500000002", "Brooklyn"));
-    	ourSystem.addManager(new Manager("M3", "Estelle", "Leonard", "0500000003", "Queens"));
-    	ourSystem.addManager(new Manager("M4", "Jack", "Geller", "0500000004", "Manhattan"));
+        ourSystem.addManager(new MainManager("9001", "Maria", "Fahoum", "0500000000", "Central Perk", "aaaaaaaa", "45645645"));
+        ourSystem.addManager(new Manager("M1", "Mike", "Hannigan", "0500000001", "NYC"));
+        ourSystem.addManager(new Manager("M2", "Janice", "Hosenstein", "0500000002", "Brooklyn"));
+        ourSystem.addManager(new Manager("M3", "Estelle", "Leonard", "0500000003", "Queens"));
+        ourSystem.addManager(new Manager("M4", "Jack", "Geller", "0500000004", "Manhattan"));
 
-    	ourSystem.addSubscription(new Subscription("S1", "Rachel", "Green", "0501111111", "Soho"));
-    	ourSystem.addSubscription(new Subscription("S2", "Monica", "Geller", "0501111112", "West Village"));
-    	ourSystem.addSubscription(new Subscription("S3", "Phoebe", "Buffay", "0501111113", "Upper East"));
-    	ourSystem.addSubscription(new Subscription("S4", "Joey", "Tribbiani", "0501111114", "Queens"));
-    	ourSystem.addSubscription(new Subscription("S5", "Ross", "Geller", "0501111115", "Museum District"));
-    	ourSystem.addSubscription(new Subscription("S6", "Chandler", "Bing", "0501111116", "Greenwich"));
-    	ourSystem.addSubscription(new Subscription("S7", "Emily", "Waltham", "0501111117", "London"));
-    	ourSystem.addSubscription(new Subscription("S8", "Carol", "Willick", "0501111118", "Brooklyn"));
-    	ourSystem.addSubscription(new Subscription("S9", "Susan", "Bunch", "0501111119", "Brooklyn"));
-    	ourSystem.addSubscription(new Subscription("S10", "Ben", "Geller", "0501111120", "NYC"));
+        ourSystem.addSubscription(new Subscription("S1", "Rachel", "Green", "0501111111", "Soho"));
+        ourSystem.addSubscription(new Subscription("S2", "Monica", "Geller", "0501111112", "West Village"));
+        ourSystem.addSubscription(new Subscription("S3", "Phoebe", "Buffay", "0501111113", "Upper East"));
+        ourSystem.addSubscription(new Subscription("S4", "Joey", "Tribbiani", "0501111114", "Queens"));
+        ourSystem.addSubscription(new Subscription("S5", "Ross", "Geller", "0501111115", "Museum District"));
+        ourSystem.addSubscription(new Subscription("S6", "Chandler", "Bing", "0501111116", "Greenwich"));
+        ourSystem.addSubscription(new Subscription("S7", "Emily", "Waltham", "0501111117", "London"));
+        ourSystem.addSubscription(new Subscription("S8", "Carol", "Willick", "0501111118", "Brooklyn"));
+        ourSystem.addSubscription(new Subscription("S9", "Susan", "Bunch", "0501111119", "Brooklyn"));
+        ourSystem.addSubscription(new Subscription("S10", "Ben", "Geller", "0501111120", "NYC"));
 
-    	ourSystem.addTaxi(new Taxi("T1", true, 35));
-    	ourSystem.addTaxi(new Taxi("T2", true, 40));
-    	ourSystem.addTaxi(new ExpressTaxi("T3", true, 45, true, 10));
-    	ourSystem.addTaxi(new ExpressTaxi("T4", true, 50, true, 12));
-    	ourSystem.addTaxi(new IntercityTaxi("T5", true, 60,new ArrayList<>(Arrays.asList("Tel Aviv", "Haifa")),15, 3));
+        ourSystem.addTaxi(new Taxi("T1", true, 35));
+        ourSystem.addTaxi(new Taxi("T2", true, 40));
+        ourSystem.addTaxi(new ExpressTaxi("T3", true, 45, true, 10));
+        ourSystem.addTaxi(new ExpressTaxi("T4", true, 50, true, 12));
+        ourSystem.addTaxi(new IntercityTaxi("T5", true, 60,new ArrayList<>(Arrays.asList("Tel Aviv", "Haifa")),15, 3));
         ourSystem.addTaxi(new IntercityTaxi("T6", true, 70,new ArrayList<>(Arrays.asList("Jerusalem", "Eilat")),20, 5));
-    	ourSystem.addTaxi(new Taxi("T7", true, 30));
-    	ourSystem.addTaxi(new ExpressTaxi("T8", true, 55, true, 13));
-    	ourSystem.addTaxi(new Taxi("T9", true, 32));
-    	ourSystem.addTaxi(new Taxi("T10", true, 38));
+        ourSystem.addTaxi(new Taxi("T7", true, 30));
+        ourSystem.addTaxi(new ExpressTaxi("T8", true, 55, true, 13));
+        ourSystem.addTaxi(new Taxi("T9", true, 32));
+        ourSystem.addTaxi(new Taxi("T10", true, 38));
     }
 
 
@@ -103,6 +101,7 @@ public class Main {
             }
             day = scanner.nextInt();
         } while (day < 1 || day > 31);
+        scanner.nextLine();
         return day;
     }
     /*
@@ -119,6 +118,7 @@ public class Main {
             }
             month = scanner.nextInt();
         } while (month < 1 || month > 12);
+        scanner.nextLine();
         return month;
     }
     /*
@@ -135,6 +135,7 @@ public class Main {
             }
             hour = scanner.nextInt();
         } while (hour < 0 || hour > 23);
+        scanner.nextLine();
         return hour;
     }
     /*
@@ -151,6 +152,7 @@ public class Main {
             }
             price = scanner.nextDouble();
         } while (price <= 0);
+        scanner.nextLine();
         return price;
     }
     /*
@@ -167,6 +169,7 @@ public class Main {
             }
             number = scanner.nextInt();
         } while (number <= 0);
+        scanner.nextLine();
         return number;
     }
     /*
@@ -179,10 +182,11 @@ public class Main {
         String pass = scanner.nextLine();
         for (Manager m : ourSystem.getAllManagers()) {
             if (m instanceof MainManager ) {
-            	MainManager mm = (MainManager) m;
+                MainManager mm = (MainManager) m;
                 if (mm.getUserName().equals(user) && mm.getPassword().equals(pass)) {
                     System.out.println("Welcome Main Manager " + mm.getFirstName());
                     mainManagerMenu();
+                    return;
                 }
             }
         }
@@ -215,9 +219,7 @@ public class Main {
             } else {
                 System.out.println("Invalid option.");
             }
-
         }
-
     }
     /*
      * Effect: Getting subscriber values from user, adds it to our DataBase 
@@ -235,10 +237,10 @@ public class Main {
 
         if(added) 
         {
-        	System.out.println("Subscriber added.");
+            System.out.println("Subscriber added.");
         }
         else System.out.println("Failed to add subscriber .");
-        mainManagerMenu();
+        return;
     }
     /*
      * Effect: Getting manager values form user, adds it to our DataBase 
@@ -246,7 +248,6 @@ public class Main {
     public static void addManager() {
         System.out.println("Type: 1. Regular  2. Main");
         int type = scanner.nextInt(); scanner.nextLine();
-
         System.out.print("ID: "); String id = scanner.nextLine();
         System.out.print("First name: "); String fn = scanner.nextLine();
         System.out.print("Last name: "); String ln = scanner.nextLine();
@@ -256,24 +257,24 @@ public class Main {
         Manager manager;
         if (type == 1) 
         {
-        	manager = new Manager(id, fn, ln, phone, addr);
+            manager = new Manager(id, fn, ln, phone, addr);
         } 
         else 
         {
             System.out.print("Username: "); String un = scanner.nextLine();
             System.out.print("Password: "); String pw = scanner.nextLine();
-        	manager = new MainManager(id, fn, ln, phone, addr, un, pw);
-
+            manager = new MainManager(id, fn, ln, phone, addr, un, pw);
         }
-        boolean added = ourSystem.addManager(manager);       // addManager(Manager)
+        boolean added = ourSystem.addManager(manager);
 
         if(added) 
         {
-        	System.out.println("Manager added.");
+            System.out.println("Manager added.");
         }
-        
         else System.out.println("Failed to add manager!");
-        return;    }
+        return;
+    }
+
     /*
      * Effect: Getting Taxi values form user, adds it to our DataBase 
      */
@@ -282,8 +283,8 @@ public class Main {
         String type = scanner.nextLine(); 
         System.out.print("Code: "); String code = scanner.nextLine();
         System.out.print("Available (true/false): "); boolean avail = scanner.nextBoolean();
-        System.out.print("Min price: "); double price = getValidPrice();
         scanner.nextLine();
+        System.out.print("Min price: "); double price = getValidPrice();
 
         boolean added=false;
 
@@ -294,9 +295,9 @@ public class Main {
         else if (type.equals("2")) {
             System.out.print("City Taxi (true/false): "); 
             boolean city = scanner.nextBoolean();
+            scanner.nextLine();
             System.out.print("Extra Price: "); 
             double extra = getValidPrice();
-            scanner.nextLine();
             added = ourSystem.addTaxi(new ExpressTaxi(code, avail, price, city, extra));
         } 
         else if (type.equals("3")) {
@@ -312,21 +313,17 @@ public class Main {
             }
 
             System.out.print("Extra price: "); 
-            double extra =getValidPrice();
+            double extra = getValidPrice();
             System.out.print("Max hours: "); 
             int hours = getPositiveNumber();
-            scanner.nextLine();
             added = ourSystem.addTaxi(new IntercityTaxi(code, avail, price, cities, extra, hours));
         }
-        if(added) 
-        {
-    	   System.out.println("Taxi added.");
-
+        if(added) {
+            System.out.println("Taxi added.");
         }
-
         else System.out.println("failed to add Taxi");
         return;
-        }
+    }
     /*
      * Effect: Getting a taxi code and manager's ID, adds taxi to manager's taxi list if legal 
      */
@@ -336,8 +333,8 @@ public class Main {
         System.out.print("Manager ID: ");
         String managerId = scanner.nextLine();
         Taxi taxi = null;
-        for (Taxi t : ourSystem.getTaxis()) {
-            if (t != null && t.getTaxiCode().equals(taxiCode)) {
+        for (Taxi t : ourSystem.getAllTaxies()) {
+            if (t != null && Objects.equals(t.getTaxiCode(), taxiCode)){
                 taxi = t;
                 break;
             }
@@ -347,15 +344,17 @@ public class Main {
             return;
         }
 
-        boolean m2=false;
+        boolean managerFound=false;
         for (Manager m : ourSystem.getAllManagers()) {
-            if (m != null && m.getId().equals(managerId)) {
-            	m.addTaxi(taxi);
+            if (m != null && Objects.equals(m.getId(), managerId)) {
+                m.addTaxi(taxi);
                 System.out.println("Taxi " + taxiCode + " assigned to Manager " + m.getFirstName());
-                m2=true;
+                managerFound=true;
+                
             }
         }
-        if(!m2)  System.out.println("Manager not found.");
+        if(!managerFound)  
+            System.out.println("Manager not found.");
         return;
     }
     
@@ -365,17 +364,16 @@ public class Main {
     public static void loginManager() {
         System.out.print("Manager ID: ");
         String id = scanner.nextLine();
-        boolean founded = false;
+        boolean found = false;
         for (Manager m : ourSystem.getAllManagers()) {
             if (!(m instanceof MainManager) && m.getId().equals(id)) {
                 System.out.println("Hello Manager " + m.getFirstName());
-                founded = true;
+                found = true;
                 managerMenu(m);
+                return;
             }
         }
-       if(!founded) System.out.println("Manager not found.");
-        return;
-        
+       if(!found) System.out.println("Manager not found.");  
     }
     /*
      * Effect: Shows regular manager's menu
@@ -389,21 +387,23 @@ public class Main {
             System.out.print("Choose: ");
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1" : addOrder(manager);
-                case "2" : changeTaxiInOrder(manager);
-                case "0" : { return;}
-                default : System.out.println("Invalid option.");
+                case "1": addOrder(manager);
+                break; 
+                case "2": changeTaxiInOrder(manager);
+                break;
+                case "0": return; 
+                default: System.out.println("Invalid option.");           
             }
         }
     }
 
-   
+    
     /*
      * Effect: Getting order values from user, if legal, adds order to DataBase 
      */
     public static void addOrder(Manager manager) {
 
-    	System.out.print("Order ID: ");
+        System.out.print("Order ID: ");
         String orderId = scanner.nextLine();
         System.out.print("Subscriber ID: ");
         String subId = scanner.nextLine();
@@ -411,7 +411,7 @@ public class Main {
         String taxiCode = scanner.nextLine();
 
         Subscription sub = null;
-        for (Subscription s : ourSystem.getSubscriptions()) { // Checking if subscriber exists
+        for (Subscription s : ourSystem.getAllSubscribers()) {
             if (s != null && s.getSubCode().equals(subId)) {
                 sub = s;
                 break;
@@ -419,8 +419,8 @@ public class Main {
         }
 
         Taxi taxi = null;
-        for (Taxi t : ourSystem.getTaxis()) {
-            if (t != null && t.getTaxiCode().equals(taxiCode)) { // Checking if taxi exists
+        for (Taxi t : ourSystem.getAllTaxies()) {
+            if (t != null && t.getTaxiCode().equals(taxiCode)) {
                 taxi = t;
                 break;
             }
@@ -442,79 +442,95 @@ public class Main {
         int month = getValidMonth();
         System.out.print("Hour: ");
         int hour = getValidHour();
-        scanner.nextLine();
 
-        //Creating new Order and adding it to all orders
         Order newO = new Order(orderId, manager.getId(), day, month, hour, subId, taxi, taxi.getMinPrice()); 
-        ourSystem.addOrder(newO);
-
+        if(ourSystem.addOrder(newO))
+            System.out.println("Added succesfully"); 
         taxi.setAvailable(false);
-        managerMenu(manager);
+        return;
     }
 
     /*
-     * Effect: Getting existing order's number, changing taxi if legal 
-     */
+    * Effect: Getting existing order's number, changing taxi if legal 
+    */
     public static void changeTaxiInOrder(Manager manager) {
-        int orderCount = ourSystem.getAllOrders().size(); //Getting number of orders
-    	if(orderCount == 0) {
-            System.out.print("There are no orders yet!");
-            managerMenu(manager);
+        
+        ArrayList<Order> allOrders = ourSystem.getAllOrders();  
+        if (allOrders.isEmpty()) {
+            System.out.println("There are no orders yet!");
+            return;
+        }
 
-    	}
-        System.out.print("Orders codes : ");
-        for(Order order : ourSystem.getAllOrders())
-        	System.out.print(order.getOrderNum()+" , ");
+        System.out.print("Orders codes: ");
+        for (Order order_loop_var : allOrders) {
+            System.out.print(order_loop_var.getOrderNum() + " , ");
+        }
         System.out.println();
-        System.out.print("Enter order's code that  you want to change : ");
-
+        System.out.print("Enter order's code that you want to change: ");
         String num = scanner.nextLine();
         Order o = null;
 
-        for(Order order : ourSystem.getAllOrders()) {
-        	if(order.getOrderNum().equals(num))
-        		 o = order;
+        for (Order order_loop_var : allOrders) {
+            if (order_loop_var.getOrderNum().equals(num)) {
+                o = order_loop_var;
+                break;
+            }
         }
-        if (o==null) {
+    
+        if (o == null) {
             System.out.println("Invalid order number.");
             return;
         }
 
-        Taxi oldTaxi = null;
+        Taxi taxiInOrderObject = o.getTaxi();
+        if (taxiInOrderObject == null) {
+            System.out.println("No taxi is currently assigned to order " + o.getOrderNum() + ".");
+            return;
+        }
+
+        Taxi oldTaxi = null; 
         for (Taxi t : ourSystem.getAllTaxies()) {
-            if (t != null && t.getTaxiCode().equals(o.getTaxi().getTaxiCode())) {
+            if (t != null && t.getTaxiCode().equals(taxiInOrderObject.getTaxiCode())) {
                 oldTaxi = t;
                 break;
             }
         }
 
-        if (oldTaxi == null || !(oldTaxi instanceof Taxi)) {
-            System.out.println("Original taxi is not regular. Cannot change.");
+        if (oldTaxi == null) {
+            System.out.println("The taxi (" + taxiInOrderObject.getTaxiCode() + ") originally assigned to the order was not found in the system.");
             return;
         }
 
         System.out.print("New Taxi Code: ");
         String newCode = scanner.nextLine();
-
         Taxi newTaxi = null;
+
         for (Taxi t : ourSystem.getAllTaxies()) {
-            if (t != null && t.getTaxiCode().equals(newCode) && t.isAvailable()) {
-                newTaxi = t;
-                break;
+            if (t != null && t.getTaxiCode().equals(newCode)) {
+                if (t.isAvailable()) {
+                    newTaxi = t;
+                    break;
+                } else {
+                    System.out.println("Taxi " + newCode + " was found but is currently not available.");
+                    return;
+                }
             }
         }
 
         if (newTaxi == null) {
-            System.out.println("New Taxi not found or not available.");
+            System.out.println("New Taxi with code " + newCode + " not found in the system.");
             return;
         }
 
         o.setTaxi(newTaxi);
         o.setOrderPrice(newTaxi.getMinPrice());
-        oldTaxi.setAvailable(true);
+
+        oldTaxi.setAvailable(true);  
         newTaxi.setAvailable(false);
-        System.out.println("Taxi changed in order.");
-        managerMenu(manager);
+
+        System.out.println("Taxi in order " + o.getOrderNum() + " changed successfully from " + oldTaxi.getTaxiCode() + " to " + newTaxi.getTaxiCode() + ".");
+    
+        return;
     }
     /*
      * Effect: Getting subscriber ID from user, if legal, logging in 
@@ -523,7 +539,7 @@ public class Main {
         System.out.print("Subscriber ID: ");
         String id = scanner.nextLine();
         Subscription sub = null;
-        for (Subscription s : ourSystem.getSubscriptions()) {
+        for (Subscription s : ourSystem.getAllSubscribers()) {
             if (s != null && s.getSubCode().equals(id)) {
                 sub = s;
                 break;
@@ -550,19 +566,19 @@ public class Main {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1" : {
-                	printSubscriberOrders(sub);
-                	break;
+                    printSubscriberOrders(sub);
+                    break;
                 }
                 case "2" :{
-                	updateSubscriberDetails(sub);
-                	break;
+                    updateSubscriberDetails(sub);
+                    break;
                 }
                 case "3" :{
-                	showTaxiDetails(sub);
-                	break;
+                    showTaxiDetails(sub);
+                    break;
                 }
                 case "0" : {
-                	return;
+                    return;
                 }
                 default : System.out.println("Invalid option.");
             }
@@ -583,17 +599,16 @@ public class Main {
 
         for (Order o:orders) {
                 System.out.println(o);
-
-                for (Taxi t : ourSystem.getTaxis()) 
+                for (Taxi t : ourSystem.getAllTaxies()) 
                 {
-                    if (t != null && t.getTaxiCode().equals(o.getTaxi().getTaxiCode())) {
+                    if (o.getTaxi() != null && t != null && t.getTaxiCode().equals(o.getTaxi().getTaxiCode())) {
                         System.out.println("Taxi Details: " + t);
+                        break;
                     }
                 }
         }
-
-            return;
-        }
+        return;
+    }
     
     /*
      * Effect: Updates subscriber's details according user requests
@@ -613,29 +628,27 @@ public class Main {
      * Effect: Getting a taxi code from user, if found, showing taxi details 
      */
 
-    public  static void showTaxiDetails(Subscription sub) {
+    public static void showTaxiDetails(Subscription sub) { 
         System.out.print("Taxi Code: ");
-        boolean founded=false;
+        boolean found=false;
         String taxiCode = scanner.nextLine();
-        for (Taxi t : ourSystem.getTaxis()) {
+        for (Taxi t : ourSystem.getAllTaxies()) {
             if (t != null && t.getTaxiCode().equals(taxiCode)) {
-            	founded=true;
+                found=true;
                 System.out.println(t);
-               
+                break; 
             }
         }
-        if(!founded) System.out.println("Taxi not found.");
+        if(!found) System.out.println("Taxi not found.");
         return;
-        
     }
     /*
      * Showing all taxies
      */
-    public  static void displayAllTaxis() {
+    public static void displayAllTaxis() {
         System.out.println("\n--- All Taxis ---");
-        for (Taxi t : ourSystem.getTaxis()) {
+        for (Taxi t : ourSystem.getAllTaxies()) {
             System.out.println(t);
         }
     }
-
 }
