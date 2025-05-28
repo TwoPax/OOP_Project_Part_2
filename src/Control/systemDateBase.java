@@ -92,16 +92,38 @@ public class systemDateBase {
      * Effect: If legal, removes subscriber from arraylist of subscribers
      * Output: True if removed succesfully, false otherwise
      */
-	public boolean removeSubscription(Subscription subscriptionToremove){
-        if(subscriptionToremove == null)
+	 public boolean removeSubscription(String subIdToRemove){
+        if(subIdToRemove == null)
             return false;
-        
-        if(!allSubscribers.contains(subscriptionToremove))
-            return false;
-        
-        int subIndex = allSubscribers.indexOf(subscriptionToremove);
-        allSubscribers.remove(subIndex);
-        return true;
+
+        boolean subscriberFoundAndRemoved = false;
+        // Remove from allSubscribers
+        for (int i = 0; i < allSubscribers.size(); i++) {
+            if (allSubscribers.get(i).getSubCode().equals(subIdToRemove)) {
+                allSubscribers.remove(i);
+                subscriberFoundAndRemoved = true;
+                break;
+            }
+        }
+        if (subscriberFoundAndRemoved) {
+        //  Remove all associated orders from allOrders (main ArrayList)
+        for (int i = allOrders.size() - 1; i >= 0; i--) 
+        {
+                if (allOrders.get(i).getSubCode().equals(subIdToRemove)) 
+                {
+                    allOrders.remove(i);
+                }
+        }
+        // 3. Remove entry from allOrderHashMap
+            allOrderHashMap.remove(subIdToRemove);
+
+            // 4. Remove entry from allOrdersHashtable
+            allOrdersHashtable.remove(subIdToRemove);
+
+            return true;
+        }
+
+        return false; // Subscriber not found
     }
 
     /*
@@ -120,22 +142,29 @@ public class systemDateBase {
         return true;
     }
     /*
-     * Input: A manager to remove
+     * Input: The ID of a manager to remove
      * Effect: If legal, removes manager from arraylist of managers
      * Output: True if removed succesfully, false otherwise
      */
-	public boolean removeManager(Manager ManagerToRemove){
+    public boolean removeManager(String managerIdToRemove){
+        if(managerIdToRemove == null)
+            return false;
 
-        if(ManagerToRemove == null)
+        if (Administrator != null && Administrator.getId() != null && Administrator.getId().equals(managerIdToRemove)) {
+            System.out.println("Cannot remove the Main Administrator.");
             return false;
-        
-        if(!allManagers.contains(ManagerToRemove))
-            return false;
-        
-        int MIndex = allManagers.indexOf(ManagerToRemove);
-        allManagers.remove(MIndex);
-        return true;
-    }
+        }
+
+        for (int i = 0; i < allManagers.size(); i++) {
+            if (allManagers.get(i).getId().equals(managerIdToRemove)) {
+                allManagers.remove(i);
+                return true;
+            }
+        }
+        return false; // Manager not found
+        }
+
+
 
 
     /*
@@ -155,22 +184,40 @@ public class systemDateBase {
     }
 
     /*
-     * Input: A Taxi to remove
+     * Input: The code of a taxi to remove
      * Effect: If legal, removes taxi from array list of taxies
      * Output: True if removed succesfully, false otherwise
      */
-	public boolean removeTaxi(Taxi taxiToRemove){
-        if(taxiToRemove == null)
+    public boolean removeTaxi(String taxiCodeToRemove){
+        if(taxiCodeToRemove == null)
             return false;
-        
-        if(!allTaxies.contains(taxiToRemove))
-            return false;
-        
-        int taxiIndex = allTaxies.indexOf(taxiToRemove);
-        allTaxies.remove(taxiIndex);
-        return true;
+
+        boolean taxiFoundAndRemoved = false;
+        // 1. Remove from allTaxies
+        for (int i = 0; i < allTaxies.size(); i++) {
+            if (allTaxies.get(i).getTaxiCode().equals(taxiCodeToRemove)) {
+                allTaxies.remove(i);
+                taxiFoundAndRemoved = true;
+                break; 
+            }
+        }
+
+        if (taxiFoundAndRemoved) {
+            //  Remove the taxi from any station it might be in
+            for (Station station : allStations) {
+                ArrayList<Taxi> stationTaxis = station.getTaxis();
+                for (int i = stationTaxis.size() - 1; i >= 0; i--) {
+                    if (stationTaxis.get(i).getTaxiCode().equals(taxiCodeToRemove)) {
+                        stationTaxis.remove(i);
+                    }
+                }
+            }
+            return true;
+        }
+        return false; // Taxi not found
     }
 
+    
     /*
      * Input: A new Station
      * Effect: If its a new station and station is legal, adds it to array list of stations
