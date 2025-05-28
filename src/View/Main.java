@@ -95,6 +95,7 @@ public class Main {
         int day;
         do {
             System.out.print("Enter day (1-31): ");
+
             while (!scanner.hasNextInt()) {
                 System.out.print("Invalid input. Enter day (1-31): ");
                 scanner.next();
