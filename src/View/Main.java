@@ -95,7 +95,6 @@ public class Main {
         int day;
         do {
             System.out.print("Enter day (1-31): ");
-
             while (!scanner.hasNextInt()) {
                 System.out.print("Invalid input. Enter day (1-31): ");
                 scanner.next();
@@ -195,7 +194,7 @@ public class Main {
     }
     /*
      * Effect: Shows main manager menu
-     */
+       */
     public static void mainManagerMenu() {
         while (true) 
         {
@@ -207,6 +206,10 @@ public class Main {
             System.out.println("5. Remove Subscriber"); 
             System.out.println("6. Remove Manager");    
             System.out.println("7. Remove Taxi");       
+            System.out.println("8. Add Station");       
+            System.out.println("9. Remove Station");    
+            System.out.println("10. Add Order");         
+            System.out.println("11. Remove Order");      
             System.out.println("0. Back to Main Menu");
             System.out.print("Choose: ");
             String choice = scanner.nextLine();
@@ -229,8 +232,7 @@ public class Main {
             } 
             else if (choice.equals("5")) 
             { 
-            removeSubscriber();
-
+                removeSubscriber();
             } 
             else if (choice.equals("6")) 
             { 
@@ -239,6 +241,23 @@ public class Main {
             else if (choice.equals("7")) 
             { 
                 removeTaxi();
+            }
+            else if (choice.equals("8")) 
+            {
+                addStation(); 
+            }
+            else if (choice.equals("9")) 
+            {
+                removeStation(); 
+            }
+            else if (choice.equals("10")) 
+            {
+                // For adding orders, we need a manager object.
+                addOrder(ourSystem.getAdministrator()); 
+            }
+            else if (choice.equals("11")) // New case for Remove Order
+            {
+                removeOrder(); 
             }
             else if (choice.equals("0")) 
             {
@@ -400,6 +419,48 @@ public class Main {
         }
     }
 
+    /**
+     * Effect: Prompts user for Station details and adds a new station to the system.
+     */
+    public static void addStation() {
+        System.out.print("Enter Station Name: ");
+        String name = scanner.nextLine();
+        Station newStation = new Station(name);
+        if (ourSystem.addStation(newStation)) { 
+            System.out.println("Station '" + name + "' added successfully.");
+        } else {
+            System.out.println("Failed to add station '" + name + "'. It might already exist.");
+        }
+    }
+
+    /**
+     * Effect: Prompts user for Station name and removes the station from the system.
+     */
+    public static void removeStation() {
+        System.out.print("Enter Station Name to remove: ");
+        String nameToRemove = scanner.nextLine();
+        Station stationToRemove = null;
+        
+        for (Station s : ourSystem.getAllStations()) { 
+            if (s.getStationName().equals(nameToRemove)) { 
+                stationToRemove = s;
+                break;
+            }
+        }
+
+        if (stationToRemove == null) {
+            System.out.println("Station '" + nameToRemove + "' not found.");
+            return;
+        }
+
+        if (ourSystem.removeStation(stationToRemove)) { 
+            System.out.println("Station '" + nameToRemove + "' removed successfully.");
+        } else {
+            System.out.println("Failed to remove station '" + nameToRemove + "'.");
+        }
+    }
+
+
 
 
 
@@ -527,6 +588,40 @@ public class Main {
             System.out.println("Added succesfully"); 
         taxi.setAvailable(false);
         return;
+    }
+    
+     /**
+     * Effect: Prompts user for Order ID and removes the order from the system.
+     */
+    public static void removeOrder() {
+        System.out.print("Enter Order ID to remove: ");
+        String orderIdToRemove = scanner.nextLine();
+        Order orderToRemove = null;
+
+        // Find the order object based on the ID
+        for (Order o : ourSystem.getAllOrders()) { 
+            if (o.getOrderNum().equals(orderIdToRemove)) { 
+                orderToRemove = o;
+                break;
+            }
+        }
+
+        if (orderToRemove == null) {
+            System.out.println("Order with ID '" + orderIdToRemove + "' not found.");
+            return;
+        }
+
+        // Set the taxi associated with the order back to available (if any)
+        Taxi assignedTaxi = orderToRemove.getTaxi();
+        if (assignedTaxi != null) {
+            assignedTaxi.setAvailable(true);
+        }
+
+        if (ourSystem.removeOrder(orderToRemove)) {
+            System.out.println("Order '" + orderIdToRemove + "' removed successfully.");
+        } else {
+            System.out.println("Failed to remove order '" + orderIdToRemove + "'.");
+        }
     }
 
     /*
