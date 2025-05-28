@@ -255,7 +255,7 @@ public class Main {
                 // For adding orders, we need a manager object.
                 addOrder(ourSystem.getAdministrator()); 
             }
-            else if (choice.equals("11")) // New case for Remove Order
+            else if (choice.equals("11")) 
             {
                 removeOrder(); 
             }
