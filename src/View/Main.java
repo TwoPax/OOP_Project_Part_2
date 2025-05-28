@@ -410,7 +410,7 @@ public class Main {
     public static void removeTaxi() {
         System.out.print("Enter Taxi Code to remove: ");
         String code = scanner.nextLine();
-        boolean removed = ourSystem.removeTaxi(code); // This line calls the systemDateBase method
+        boolean removed = ourSystem.removeTaxi(code);
 
         if (removed) {
             System.out.println("Taxi removed successfully.");
@@ -459,11 +459,6 @@ public class Main {
             System.out.println("Failed to remove station '" + nameToRemove + "'.");
         }
     }
-
-
-
-
-
     /*
      * Effect: Getting a taxi code and manager's ID, adds taxi to manager's taxi list if legal 
      */
@@ -536,8 +531,6 @@ public class Main {
             }
         }
     }
-
-    
     /*
      * Effect: Getting order values from user, if legal, adds order to DataBase 
      */
